@@ -3,6 +3,8 @@ import Link from "next/link";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import IconMosine from "../ui/IconMosine";
+
 const HeaderContainer = styled.header`
   width: 100vw;
   padding-top: 10px;
@@ -23,13 +25,14 @@ const Header = () => {
   return (
     <HeaderContainer>
       <div>
-        <img src="/static/img/mosine-logo.png" alt="" />
+        <IconMosine />
         <p
           css={css`
             color: var(--white);
             font-family: "Quicksand", sans-serif;
             font-size: 8px;
             line-height: 10px;
+            margin-top: 0;
           `}
         >
           Codigos QR para pacientes Alzheimer
