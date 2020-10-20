@@ -34,7 +34,7 @@ const Layout = (props) => {
         <html lang="es" />
         <title>Mosine</title>
         <link
-          href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Roboto:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Roboto:wght@400;700;900&display=swap"
           rel="stylesheet"
         />
       </Head>
