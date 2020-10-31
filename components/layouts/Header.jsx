@@ -3,7 +3,7 @@ import Link from "next/link";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import IconMosine from "../ui/IconMosine";
+import IconMosine from "../ui/icons/IconMosine";
 
 const HeaderContainer = styled.header`
   width: 100vw;

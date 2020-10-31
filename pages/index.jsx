@@ -7,17 +7,17 @@ import Header from "../components/layouts/Header";
 
 import Button from "../components/ui/Button";
 
-import IconQR from "../components/ui/IconQR";
-import IconGoogle from "../components/ui/IconGoogle";
-import IconMail from "../components/ui/IconMail";
-import IconCard from "../components/ui/IconCard";
-import IconHeart from "../components/ui/IconHeart";
-import IconPDF from "../components/ui/IconPDF";
-import IconBullet from "../components/ui/IconBullet";
-import IconArrow from "../components/ui/IconArrow";
-import IconFacebook from "../components/ui/IconFacebook";
-import IconTwitter from "../components/ui/IconTwitter";
-import IconInstagram from "../components/ui/IconInstagram";
+import IconQR from "../components/ui/icons/IconQR";
+import IconGoogle from "../components/ui/icons/IconGoogle";
+import IconMail from "../components/ui/icons/IconMail";
+import IconCard from "../components/ui/icons/IconCard";
+import IconHeart from "../components/ui/icons/IconHeart";
+import IconPDF from "../components/ui/icons/IconPDF";
+import IconBullet from "../components/ui/icons/IconBullet";
+import IconArrow from "../components/ui/icons/IconArrow";
+import IconFacebook from "../components/ui/icons/IconFacebook";
+import IconTwitter from "../components/ui/icons/IconTwitter";
+import IconInstagram from "../components/ui/icons/IconInstagram";
 
 const HeroContainer = styled.div`
   width: 100vw;

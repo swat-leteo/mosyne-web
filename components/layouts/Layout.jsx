@@ -9,12 +9,14 @@ const Layout = (props) => {
         styles={css`
           :root {
             --white: #fafafa;
+            --gray: #f2f2f2;
             --blue: #3e5aad;
             --orange: #db4a39;
             --violet: #3b3647;
             --terracota: #dc4949;
             --purple1: #6f44e0;
             --purple2: #5635ad;
+            --red: #c70808;
             --font: "Roboto", sans-serif;
           }
           html {

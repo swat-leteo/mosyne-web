@@ -1,12 +1,14 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 import Layout from "../components/layouts/Layout";
 
-import IconMosine from "../components/ui/IconMosine";
 import Button from "../components/ui/Button";
-import IconHeartFly from "../components/ui/IconHeartFly";
-import IconHero from "../components/ui/IconHero";
+
+import IconMosine from "../components/ui/icons/IconMosine";
+import IconHeartFly from "../components/ui/icons/IconHeartFly";
+import IconHero from "../components/ui/icons/IconHero";
 
 const InfoContainer = styled.main`
   height: 100vh;
@@ -71,7 +73,7 @@ const BulletsContainer = styled.div`
     background-color: var(--white);
     opacity: 0.5;
     cursor: pointer;
-    &:nth-child(${(props) => props.slides}) {
+    &:nth-of-type(${(props) => props.slides}) {
       opacity: 1;
     }
   }
@@ -106,22 +108,26 @@ export default function Info() {
           <p onClick={() => setSlides(3)}></p>
         </BulletsContainer>
         <div className="button__container">
-          <Button
-            bgColor="transparent"
-            textColor="#FAFAFA"
-            borderColor="#FAFAFA"
-            shadow="false"
-          >
-            Cancelar
-          </Button>
-          <Button
-            bgColor="var(--purple1)"
-            textColor="#FAFAFA"
-            borderColor="var(--purple1)"
-            shadow="false"
-          >
-            Siguiente
-          </Button>
+          <Link href="/">
+            <Button
+              bgColor="transparent"
+              textColor="#FAFAFA"
+              borderColor="#FAFAFA"
+              shadow="false"
+            >
+              Regresar
+            </Button>
+          </Link>
+          <Link href="/register">
+            <Button
+              bgColor="var(--purple1)"
+              textColor="#FAFAFA"
+              borderColor="var(--purple1)"
+              shadow="false"
+            >
+              Siguiente
+            </Button>
+          </Link>
         </div>
       </InfoContainer>
     </Layout>
