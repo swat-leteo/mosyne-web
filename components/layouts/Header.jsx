@@ -15,7 +15,7 @@ const HeaderContainer = styled.header`
   a {
     text-decoration: none;
     color: var(--white);
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font);
     font-size: 10px;
     line-height: 12px;
     font-weight: 700;
@@ -38,7 +38,7 @@ const Header = () => {
           Codigos QR para pacientes Alzheimer
         </p>
       </div>
-      <Link href="/">Iniciar sesion</Link>
+      <Link href="/info">Iniciar sesion</Link>
     </HeaderContainer>
   );
 };

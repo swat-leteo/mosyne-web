@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
+import Link from "next/link";
 
 import Layout from "../components/layouts/Layout";
 import Header from "../components/layouts/Header";
@@ -29,7 +30,7 @@ const HeroContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font);
   h1 {
     width: 60vw;
     font-weight: bold;
@@ -74,7 +75,7 @@ const HeroContainer = styled.div`
 `;
 
 const ProcedureContainer = styled.div`
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font);
   margin-bottom: 50px;
   h1 {
     font-weight: 700;
@@ -152,7 +153,7 @@ const SmallHeroContainer = styled.div`
   margin: 0;
   p {
     position: absolute;
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font);
     font-weight: 900;
     font-size: 50px;
     color: var(--white);
@@ -189,14 +190,16 @@ export default function Home() {
             <IconGoogle />
             Registrate con Google
           </Button>
-          <Button
-            bgColor="transparent"
-            textColor="#FAFAFA"
-            borderColor="#FAFAFA"
-          >
-            <IconMail />
-            Registrate con tu correo
-          </Button>
+          <Link href="/info">
+            <Button
+              bgColor="transparent"
+              textColor="#FAFAFA"
+              borderColor="#FAFAFA"
+            >
+              <IconMail />
+              Registrate con tu correo
+            </Button>
+          </Link>
           <h3>Recuperar contraseña</h3>
         </div>
       </HeroContainer>
@@ -231,7 +234,7 @@ export default function Home() {
           height: 700px;
           background-color: var(--violet);
           color: var(--white);
-          font-family: "Roboto", sans-serif;
+          font-family: var(--font);
           h1 {
             font-size: 24px;
             line-height: 28px;
@@ -346,7 +349,7 @@ export default function Home() {
           justify-content: center;
           align-items: flex-end;
           text-align: right;
-          font-family: "Roboto", sans-serif;
+          font-family: var(--font);
           color: var(--white);
           h1 {
             font-weight: 700;
@@ -381,6 +384,9 @@ export default function Home() {
           bgColor="var(--terracota)"
           textColor="#FAFAFA"
           borderColor="var(--terracota)"
+          css={css`
+            font-weight: bold;
+          `}
         >
           Quiero registrarme
         </Button>
@@ -396,7 +402,7 @@ export default function Home() {
           flex-direction: column;
           justify-content: flex-start;
           align-items: flex-start;
-          font-family: "Roboto", sans-serif;
+          font-family: var(--font);
           img {
             width: 40px;
             height: 40px;
@@ -431,7 +437,7 @@ export default function Home() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          font-family: "Roboto", sans-serif;
+          font-family: var(--font);
           color: var(--white);
           h1 {
             margin: 0 0 10px;

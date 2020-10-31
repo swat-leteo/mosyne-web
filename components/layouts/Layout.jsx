@@ -12,12 +12,14 @@ const Layout = (props) => {
             --blue: #3e5aad;
             --orange: #db4a39;
             --violet: #3b3647;
-            --terracota: #a66a6a;
+            --terracota: #dc4949;
             --purple1: #6f44e0;
             --purple2: #5635ad;
+            --font: "Roboto", sans-serif;
           }
           html {
             box-sizing: border-box;
+            margin: 0;
           }
           *,
           *:before,
@@ -32,7 +34,7 @@ const Layout = (props) => {
         `}
       />
       <Head>
-        <html lang="es" />
+        <html lang="en" />
         <title>Mosine</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Roboto:wght@400;700;900&display=swap"
