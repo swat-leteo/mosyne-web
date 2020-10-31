@@ -1,3 +1,78 @@
+import styled from "@emotion/styled";
+import Link from "next/link";
+
+import Layout from "../components/layouts/Layout";
+
+import Button from "../components/ui/Button";
+
+import IconMosine from "../components/ui/icons/IconMosine";
+
+const RegisterConfirmContainer = styled.main`
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--purple1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font);
+  color: var(--white);
+  padding-top: 20px;
+  position: relative;
+  .text {
+    font-size: 16px;
+    text-align: right;
+    position: absolute;
+    right: 11px;
+    top: 319px;
+    h1 {
+      font-size: 16px;
+      margin: 0;
+    }
+    p {
+      width: 40vw;
+      margin: 0;
+    }
+  }
+  .buttons {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    button {
+      width: 40vw;
+      justify-content: center;
+      margin-right: 20px;
+    }
+    a {
+      width: 40vw;
+      color: var(--white);
+      text-decoration: none;
+    }
+  }
+`;
+
 export default function RegisterConfirm() {
-  return <h1>Registro completo</h1>;
+  return (
+    <Layout>
+      <RegisterConfirmContainer>
+        <IconMosine width="102px" height="25px" />
+        <div className="text">
+          <h1>¡Ya estás listo!</h1>
+          <p>Te haz registrado exitosamente</p>
+        </div>
+        <div className="buttons">
+          <Link href="/edit-profile">
+            <Button
+              bgColor="transparent"
+              textColor="var(--white)"
+              borderColor="var(--purple1)"
+            >
+              Editar mi perfil
+            </Button>
+          </Link>
+          <Link href="/profile">Más tarde</Link>
+        </div>
+      </RegisterConfirmContainer>
+    </Layout>
+  );
 }

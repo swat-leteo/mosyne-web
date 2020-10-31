@@ -139,7 +139,7 @@ export default function Register() {
         <form>
           <div className="name">
             <div>
-              <label htmlFor="nombre">Nombre</label>
+              <label htmlFor="nombre">Nombre*</label>
               <Input
                 type="text"
                 placeholder="Mínimo 2 caracteres"
@@ -150,7 +150,7 @@ export default function Register() {
               {error.nombre && <p>* {error.nombre}</p>}
             </div>
             <div>
-              <label htmlFor="apellido">Apellido</label>
+              <label htmlFor="apellido">Apellido*</label>
               <Input
                 type="text"
                 placeholder="Mínimo 3 caracteres"
@@ -162,7 +162,7 @@ export default function Register() {
             </div>
           </div>
           <div className="correo">
-            <label htmlFor="email">Correo electrónico</label>
+            <label htmlFor="email">Correo electrónico*</label>
             <Input
               type="email"
               placeholder="ejemplo@mail.com"
@@ -173,7 +173,7 @@ export default function Register() {
             {error.email && <p>* {error.email}</p>}
           </div>
           <div className="password">
-            <label htmlFor="password">Contraseña</label>
+            <label htmlFor="password">Contraseña*</label>
             <Input
               type="password"
               placeholder="Mínimo 8 caracteres"
@@ -184,7 +184,7 @@ export default function Register() {
             {error.password && <p>* {error.password}</p>}
           </div>
           <div className="confirmar">
-            <label htmlFor="confirmar">Confirma tu contraseña</label>
+            <label htmlFor="confirmar">Confirma tu contraseña*</label>
             <Input
               type="password"
               placeholder="Escríbe de nuevo tu contraseña"
