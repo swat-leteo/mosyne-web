@@ -1,6 +1,6 @@
 const { default: styled } = require("@emotion/styled");
 
-export const Input = styled.input`
+const Input = styled.input`
   font-size: 12px;
   background-color: var(--white);
   border: 1px solid var(--gray);
@@ -8,3 +8,5 @@ export const Input = styled.input`
   height: 32px;
   margin-top: 10px;
 `;
+
+export default Input;

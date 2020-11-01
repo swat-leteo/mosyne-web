@@ -6,7 +6,7 @@ import styled from "@emotion/styled";
 import Layout from "../components/layouts/Layout";
 
 import Button from "../components/ui/Button";
-import { Input } from "../components/ui/Input";
+import Input from "../components/ui/Input";
 
 import IconMosineAlt from "../components/ui/icons/IconMosineAlt";
 
