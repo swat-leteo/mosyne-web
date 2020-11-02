@@ -171,7 +171,9 @@ const SmallHeroContainer = styled.div`
 export default function Home() {
   return (
     <Layout>
-      <Header />
+      <Header whiteColor="true">
+        <Link href="/info">Iniciar sesión</Link>
+      </Header>
       <HeroContainer>
         <h1>Ayudalos a regresar a casa</h1>
         <div>

@@ -10,7 +10,9 @@ import IconMosine from "../components/ui/icons/IconMosine";
 const RegisterConfirmContainer = styled.main`
   width: 100vw;
   height: 100vh;
-  background-color: var(--purple1);
+  background-image: url("./static/img/FinishedRegister.png");
+  background-size: cover;
+  background-color: var(--black);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,7 +43,6 @@ const RegisterConfirmContainer = styled.main`
     button {
       width: 40vw;
       justify-content: center;
-      margin-right: 20px;
     }
     a {
       width: 40vw;
@@ -61,16 +62,16 @@ export default function RegisterConfirm() {
           <p>Te haz registrado exitosamente</p>
         </div>
         <div className="buttons">
+          <Link href="/profile">Más tarde</Link>
           <Link href="/edit-profile">
             <Button
-              bgColor="transparent"
+              bgColor="var(--purple1)"
               textColor="var(--white)"
               borderColor="var(--purple1)"
             >
               Editar mi perfil
             </Button>
           </Link>
-          <Link href="/profile">Más tarde</Link>
         </div>
       </RegisterConfirmContainer>
     </Layout>

@@ -10,7 +10,8 @@ import IconUserDefault from "../components/ui/icons/IconUserDefault";
 const EditProfileContainer = styled.main`
   width: 100vw;
   font-family: var(--font);
-  background-color: var(--purple1);
+  background-image: url("/static/img/UserInfoRegister.png");
+  background-size: contain;
   .user-information {
     color: var(--white);
     padding-top: 20px;
@@ -50,19 +51,6 @@ const EditProfileContainer = styled.main`
     }
     h1 {
       font-size: 12px;
-    }
-    .user-email {
-      padding: 0 10px;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      p {
-        margin: 8px 0;
-        font-size: 12px;
-        &:first-of-type {
-          font-weight: 700;
-        }
-      }
     }
   }
   .formulario {
@@ -112,10 +100,6 @@ export default function EditProfile() {
             Sube tu fotografía
           </div>
           <h1>¡Hola Danna Paola!</h1>
-          <div className="user-email">
-            <p>Correo electrónico</p>
-            <p>correo@correo.com</p>
-          </div>
         </div>
         <div className="formulario">
           <h2>Datos de emergencia</h2>

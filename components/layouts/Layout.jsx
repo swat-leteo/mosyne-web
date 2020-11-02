@@ -1,6 +1,14 @@
 import React from "react";
 import Head from "next/head";
 import { Global, css } from "@emotion/core";
+import styled from "@emotion/styled";
+
+const LayoutContainer = styled.main`
+  display: block;
+  display: ${(props) => props.display};
+  grid-template-columns: ${(props) =>
+    props.menu === true ? "30% 70%" : "5% 95%"};
+`;
 
 const Layout = (props) => {
   return (
@@ -9,6 +17,7 @@ const Layout = (props) => {
         styles={css`
           :root {
             --white: #fafafa;
+            --black: #3c3c3c;
             --gray: #f2f2f2;
             --blue: #3e5aad;
             --orange: #db4a39;
@@ -43,7 +52,9 @@ const Layout = (props) => {
           rel="stylesheet"
         />
       </Head>
-      <main>{props.children}</main>
+      <LayoutContainer display={props.display} menu={props.menu}>
+        {props.children}
+      </LayoutContainer>
     </>
   );
 };
