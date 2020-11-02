@@ -81,14 +81,16 @@ export default function Privacity() {
           >
             Cancelar
           </Button>
-          <Button
-            bgColor="var(--purple1)"
-            textColor="#FAFAFA"
-            borderColor="var(--purple1)"
-            shadow="true"
-          >
-            Aceptar
-          </Button>
+          <Link href="/add-angel-info">
+            <Button
+              bgColor="var(--purple1)"
+              textColor="#FAFAFA"
+              borderColor="var(--purple1)"
+              shadow="true"
+            >
+              Aceptar
+            </Button>
+          </Link>
         </div>
       </PrivacityContainer>
     </Layout>

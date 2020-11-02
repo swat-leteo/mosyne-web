@@ -1,0 +1,2 @@
+// Angel
+export const AGREGAR_ANGEL_INFO = "AGREGAR_ANGEL_INFO";

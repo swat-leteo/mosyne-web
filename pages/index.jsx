@@ -6,6 +6,7 @@ import Layout from "../components/layouts/Layout";
 import Header from "../components/layouts/Header";
 
 import Button from "../components/ui/Button";
+import Bullets from "../components/ui/Bullets";
 
 import IconQR from "../components/ui/icons/IconQR";
 import IconGoogle from "../components/ui/icons/IconGoogle";
@@ -91,32 +92,6 @@ const ProcedureContainer = styled.div`
     line-height: 14px;
     text-align: center;
     margin-bottom: 0;
-  }
-  .points__container {
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    hr {
-      position: absolute;
-      z-index: -1;
-      top: 14px;
-      left: 20px;
-      right: 20px;
-      border: 1px solid var(--blue);
-    }
-
-    h3 {
-      width: 25px;
-      height: 25px;
-      text-align: center;
-      font-size: 10px;
-      background-color: var(--blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 60%;
-      color: var(--white);
-    }
   }
   .icons__container {
     display: flex;
@@ -208,12 +183,7 @@ export default function Home() {
       <ProcedureContainer>
         <h1>¿Cómo funciona?</h1>
         <p>3 pasos y 5 minutos hacen la diferencia</p>
-        <div className="points__container">
-          <hr />
-          <h3>1</h3>
-          <h3>2</h3>
-          <h3>3</h3>
-        </div>
+        <Bullets />
         <div className="icons__container">
           <IconCard />
           <IconHeart />
