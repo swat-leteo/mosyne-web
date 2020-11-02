@@ -20,6 +20,11 @@ const AddAngelInfoContainer = styled.main`
   form {
     padding: 10px;
   }
+  h1 {
+    font-size: 18px;
+    color: var(--blue);
+    margin: 0;
+  }
   form {
     > div {
       margin-top: 5px;
