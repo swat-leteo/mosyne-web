@@ -11,7 +11,7 @@ import Bullets from "../components/ui/Bullets";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
 
-const AddAngelDiseasesContainer = styled.main`
+const AddAngelContactContainer = styled.main`
   font-family: var(--font);
   header {
     background-color: var(--gray);
@@ -34,11 +34,6 @@ const AddAngelDiseasesContainer = styled.main`
         font-weight: 700;
         color: var(--violet);
         font-size: 12px;
-      }
-      textarea {
-        margin-top: 5px;
-        background-color: var(--gray);
-        border-color: var(--gray);
       }
     }
     .contact,
@@ -85,7 +80,7 @@ export default function AddAngelContact() {
   return (
     <Layout display="grid" menu={menu}>
       <Menu menu={menu} showMenu={showMenu} />
-      <AddAngelDiseasesContainer>
+      <AddAngelContactContainer>
         <Header>
           <Logout />
         </Header>
@@ -164,7 +159,7 @@ export default function AddAngelContact() {
             </Link>
           </div>
         </form>
-      </AddAngelDiseasesContainer>
+      </AddAngelContactContainer>
     </Layout>
   );
 }
