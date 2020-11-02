@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 import IconProfile from "../ui/icons/IconProfile";
 import IconAngel from "../ui/icons/IconAngel";
@@ -44,16 +45,20 @@ const Menu = ({ menu, showMenu }) => {
   return (
     <MenuContainer menu={menu}>
       <ul>
-        <li>
-          <IconProfile />
-          <p>Mi perfil</p>
-          <hr />
-        </li>
-        <li>
-          <IconAngel />
-          <p>Mi angel</p>
-          <hr />
-        </li>
+        <Link href="/profile">
+          <li>
+            <IconProfile />
+            <p>Mi perfil</p>
+            <hr />
+          </li>
+        </Link>
+        <Link href="/profile-angel-data">
+          <li>
+            <IconAngel />
+            <p>Mi angel</p>
+            <hr />
+          </li>
+        </Link>
         <li>
           <IconConfig />
           <p>Configuración</p>

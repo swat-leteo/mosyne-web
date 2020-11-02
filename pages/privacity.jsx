@@ -11,6 +11,7 @@ import Button from "../components/ui/Button";
 
 const PrivacityContainer = styled.main`
   font-family: var(--font);
+  height: 100vh;
   position: relative;
   header {
     background-color: var(--gray);

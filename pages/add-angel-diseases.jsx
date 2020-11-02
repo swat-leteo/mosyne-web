@@ -108,20 +108,20 @@ export default function AddAngelDiseases() {
             <label htmlFor="">¿Vivé solo?</label>
             <div>
               <input type="radio" name="life" value="si" />
-              <label for="life">Si</label>
+              <label htmlFor="life">Si</label>
               <input type="radio" name="life" value="no" />
-              <label for="life">No</label>
+              <label htmlFor="life">No</label>
             </div>
           </div>
           <div className="detonante">
             <label htmlFor="">Detonante del Alzheimer</label>
             <div>
               <input type="radio" name="detonante" value="herencia" />
-              <label for="detonante">Herencía</label>
+              <label htmlFor="detonante">Herencía</label>
               <input type="radio" name="detonante" value="depresion" />
-              <label for="detonante">Depresión</label>
+              <label htmlFor="detonante">Depresión</label>
               <input type="radio" name="detonante" value="neurologico" />
-              <label for="detonante">Neurologico</label>
+              <label htmlFor="detonante">Neurologico</label>
             </div>
           </div>
           <div className="alergias">
@@ -149,9 +149,9 @@ export default function AddAngelDiseases() {
             <label htmlFor="">¿Sufré de alguna de estas enfermedades?</label>
             <div>
               <input type="radio" name="disease" value="diabetes" />
-              <label for="disease">Diabetes</label>
+              <label htmlFor="disease">Diabetes</label>
               <input type="radio" name="disease" value="hipertension" />
-              <label for="disease">Hipertensión</label>
+              <label htmlFor="disease">Hipertensión</label>
             </div>
           </div>
           <div>
