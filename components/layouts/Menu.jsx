@@ -33,7 +33,7 @@ const MenuContainer = styled.nav`
       }
     }
   }
-  span svg {
+  > svg {
     position: absolute;
     top: 50vh;
     right: -7.5px;
@@ -60,13 +60,9 @@ const Menu = ({ menu, showMenu }) => {
         </li>
       </ul>
       {menu === true ? (
-        <span onClick={() => showMenu(false)}>
-          <IconMenuLeft />
-        </span>
+        <IconMenuLeft onClick={() => showMenu(false)} />
       ) : (
-        <span onClick={() => showMenu(true)}>
-          <IconMenuRight />
-        </span>
+        <IconMenuRight onClick={() => showMenu(true)} />
       )}
     </MenuContainer>
   );

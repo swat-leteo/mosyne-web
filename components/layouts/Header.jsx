@@ -29,10 +29,6 @@ const HeaderContainer = styled.header`
     line-height: 12px;
     font-weight: 700;
   }
-  .user {
-    display: flex;
-    align-items: center;
-  }
 `;
 
 const Header = (props) => {

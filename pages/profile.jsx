@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import styled from "@emotion/styled";
 
+import Image from "../components/ui/Image";
+
 import Layout from "../components/layouts/Layout";
 import Header from "../components/layouts/Header";
-import Image from "../components/ui/Image";
 import Menu from "../components/layouts/Menu";
+import Logout from "../components/layouts/Logout";
 
 import IconPlus from "../components/ui/icons/IconPlus";
 import IconPolice from "../components/ui/icons/IconPolice";
@@ -116,15 +118,7 @@ export default function Profile() {
       <Menu menu={menu} showMenu={showMenu} />
       <ProfileContainer>
         <Header>
-          <div className="user">
-            <Image
-              src="/static/img/dannapaola.png"
-              alt=""
-              width="18px"
-              height="18px"
-            />
-            <Link href="/">Cerrar sesión</Link>
-          </div>
+          <Logout />
         </Header>
         <div className="profile">
           <Image
@@ -143,7 +137,9 @@ export default function Profile() {
           <p>Agrega a tus angeles que cuidarás</p>
           <div>
             <span></span>
-            <IconPlus width="20px" height="20px" />
+            <Link href="/privacity">
+              <IconPlus width="20px" height="20px" />
+            </Link>
           </div>
         </div>
         <div className="emergency">
