@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 import Button from "../ui/Button";
 import Image from "../ui/Image";
@@ -77,9 +78,15 @@ const CardAngel = ({ tab }) => {
         <IconCloud /> Descargar codigo QR
       </Button>
       <ul>
-        <li>Datos personales</li>
-        <li>Contactos de emergencia</li>
-        <li>Padecimientos y síntomas</li>
+        <Link href="/profile-angel-data">
+          <li>Datos personales</li>
+        </Link>
+        <Link href="/profile-angel-contacts">
+          <li>Contactos de emergencia</li>
+        </Link>
+        <Link href="/profile-angel-diseases">
+          <li>Padecimientos y síntomas</li>
+        </Link>
       </ul>
     </CardAngelContainer>
   );

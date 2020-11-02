@@ -9,10 +9,7 @@ import Menu from "../components/layouts/Menu";
 import CardAngel from "../components/layouts/CardAngel";
 
 import Button from "../components/ui/Button";
-import Image from "../components/ui/Image";
 import Input from "../components/ui/Input";
-
-import IconCloud from "../components/ui/icons/IconCloud";
 
 const ProfileAngelDataContainer = styled.section`
   font-family: var(--font);
