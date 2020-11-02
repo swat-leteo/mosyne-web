@@ -25,12 +25,15 @@ const BulletsContainer = styled.div`
     justify-content: center;
     border-radius: 60%;
     color: var(--white);
+    &:nth-of-type(${(props) => props.bullet}) {
+      background-color: var(--purple1);
+    }
   }
 `;
 
-const Bullets = () => {
+const Bullets = ({ bullet }) => {
   return (
-    <BulletsContainer>
+    <BulletsContainer bullet={bullet}>
       <hr />
       <h3>1</h3>
       <h3>2</h3>

@@ -9,7 +9,7 @@ import IconMenuRight from "../ui/icons/IconMenuRight";
 
 const MenuContainer = styled.nav`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: linear-gradient(180deg, #6f44e0 0%, #5635ad 100%);
   font-family: var(--font);
   padding-top: 44px;
