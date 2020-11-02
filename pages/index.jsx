@@ -172,7 +172,7 @@ export default function Home() {
   return (
     <Layout>
       <Header whiteColor="true">
-        <Link href="/info">Iniciar sesión</Link>
+        <Link href="/login">Iniciar sesión</Link>
       </Header>
       <HeroContainer>
         <h1>Ayudalos a regresar a casa</h1>
