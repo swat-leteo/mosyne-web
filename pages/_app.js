@@ -1,10 +1,13 @@
 import AngelState from "../context/angel/angelState";
+import AuthState from "../context/auth/authState";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AngelState>
-      <Component {...pageProps} />
-    </AngelState>
+    <AuthState>
+      <AngelState>
+        <Component {...pageProps} />
+      </AngelState>
+    </AuthState>
   );
 }
 

@@ -1,2 +1,5 @@
 // Angel
 export const AGREGAR_ANGEL_INFO = "AGREGAR_ANGEL_INFO";
+
+// Auth
+export const REGISTRAR_USUARIO = "REGISTRAR_USUARIO";

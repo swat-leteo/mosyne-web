@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import styled from "@emotion/styled";
 
 import Layout from "../components/layouts/Layout";
@@ -11,6 +10,8 @@ import Input from "../components/ui/Input";
 import IconMosineAlt from "../components/ui/icons/IconMosineAlt";
 
 import validarRegister from "../validation/validarRegister";
+
+import AuthContext from "../context/auth/authContext";
 
 const RegisterContainer = styled.main`
   width: 100vw;
@@ -98,7 +99,7 @@ const RegisterContainer = styled.main`
 `;
 
 export default function Register() {
-  const router = useRouter();
+  const { registrarUsuario } = useContext(AuthContext);
 
   const [error, setError] = useState({});
 
@@ -120,13 +121,15 @@ export default function Register() {
   };
 
   const handleSubmit = () => {
-    // TODO: saltando validacion
-    router.push("/register-confirm");
-    return;
     const errores = validarRegister(user);
     setError(errores);
     if (Object.keys(errores).length === 0) {
-      router.push("/register-confirm");
+      registrarUsuario({
+        email,
+        password,
+        firstname: user.nombre,
+        lastname: user.apellido,
+      });
     }
   };
 
