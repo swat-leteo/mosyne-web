@@ -26,7 +26,7 @@ const CardAngelContainer = styled.div`
   }
   > button {
     margin: 10px 0 0 10px;
-    width: 45%;
+    width: ${(props) => (props.menu === true ? "60%" : "45%")};
     justify-content: center;
     align-items: center;
     font-size: 9px;
@@ -55,9 +55,9 @@ const CardAngelContainer = styled.div`
   }
 `;
 
-const CardAngel = ({ tab }) => {
+const CardAngel = ({ tab, menu }) => {
   return (
-    <CardAngelContainer tab={tab}>
+    <CardAngelContainer tab={tab} menu={menu}>
       <div className="info">
         <Image
           src="/static/img/dannapaola.png"

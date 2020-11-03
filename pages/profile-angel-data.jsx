@@ -39,9 +39,8 @@ const ProfileAngelDataContainer = styled.section`
     }
     .names,
     .state,
-    .address,
-    .buttons {
-      flex-direction: row;
+    .address {
+      flex-direction: ${(props) => (props.menu === true ? "column" : "row")};
     }
     .names div:first-of-type {
       margin-right: 20px;
@@ -57,6 +56,7 @@ const ProfileAngelDataContainer = styled.section`
       }
     }
     .buttons {
+      flex-direction: row;
       margin: 20px 0;
       button {
         margin: 0;
@@ -74,11 +74,11 @@ export default function ProfileAngelData() {
   return (
     <Layout display="grid" menu={menu}>
       <Menu menu={menu} showMenu={showMenu} />
-      <ProfileAngelDataContainer>
+      <ProfileAngelDataContainer menu={menu}>
         <Header>
           <Logout />
         </Header>
-        <CardAngel tab="1" />
+        <CardAngel tab="1" menu={menu} />
         <form>
           <div className="names">
             <div>

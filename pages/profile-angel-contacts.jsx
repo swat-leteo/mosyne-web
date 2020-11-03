@@ -36,9 +36,8 @@ const ProfileAngelContactsContainer = styled.section`
     .names,
     .telephone,
     .state,
-    .address,
-    .buttons {
-      flex-direction: row;
+    .address {
+      flex-direction: ${(props) => (props.menu === true ? "column" : "row")};
     }
     .contact {
       width: 100%;
@@ -58,6 +57,7 @@ const ProfileAngelContactsContainer = styled.section`
       }
     }
     .buttons {
+      flex-direction: row;
       margin-top: 20px;
       button {
         margin: 0;
@@ -75,11 +75,11 @@ export default function ProfileAngelContacts() {
   return (
     <Layout display="grid" menu={menu}>
       <Menu menu={menu} showMenu={showMenu} />
-      <ProfileAngelContactsContainer>
+      <ProfileAngelContactsContainer menu={menu}>
         <Header>
           <Logout />
         </Header>
-        <CardAngel tab="2" />
+        <CardAngel tab="2" menu={menu} />
         <form>
           <div className="contact">
             <label htmlFor="">Soy contacto de emergencia</label>
@@ -148,7 +148,7 @@ export default function ProfileAngelContacts() {
                 borderColor="var(--purple1)"
                 shadow="true"
               >
-                Siguiente
+                Guardar
               </Button>
             </Link>
           </div>
