@@ -6,6 +6,7 @@ import AuthContext from "./authContext";
 import AuthReducer from "./authReducer";
 
 import clienteAxios from "../../config/Axios";
+import { LOGIN_USUARIO } from "../../types";
 
 const AuthState = (props) => {
   const router = useRouter();
@@ -26,7 +27,7 @@ const AuthState = (props) => {
         "success"
       );
     }
-    if (status == 409) {
+    if (status === 409) {
       Swal.fire({
         icon: "error",
         title: "¡Error!",
@@ -35,8 +36,36 @@ const AuthState = (props) => {
     }
   };
 
+  const loginUsuario = async (usuario) => {
+    const { status, data } = await clienteAxios.post("/auth/login", usuario);
+    if (status === 200) {
+      dispatch({
+        type: LOGIN_USUARIO,
+        payload: data,
+      });
+      router.push("/register-confirm");
+    }
+    if (status === 401) {
+      Swal.fire({
+        icon: "error",
+        title: "¡Error!",
+        text: "Correo o contraseña incorrecta.",
+      });
+    }
+
+    if (status === 412) {
+      Swal.fire({
+        icon: "error",
+        title: "¡Error!",
+        text: "No haz verificado tu correo",
+      });
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ usuario: state.usuario, registrarUsuario }}>
+    <AuthContext.Provider
+      value={{ usuario: state.usuario, registrarUsuario, loginUsuario }}
+    >
       {props.children}
     </AuthContext.Provider>
   );

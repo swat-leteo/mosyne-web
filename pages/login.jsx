@@ -1,4 +1,6 @@
+import { useContext, useState } from "react";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 import Layout from "../components/layouts/Layout";
 
@@ -7,6 +9,10 @@ import Input from "../components/ui/Input";
 
 import IconGoogle from "../components/ui/icons/IconGoogle";
 import IconMosineAlt from "../components/ui/icons/IconMosineAlt";
+
+import validarLogin from "../validation/validarLogin";
+
+import AuthContext from "../context/auth/authContext";
 
 const LoginContainer = styled.main`
   width: 100vw;
@@ -32,6 +38,11 @@ const LoginContainer = styled.main`
       input {
         background-color: var(--gray);
       }
+      p {
+        margin: 5px 0 0;
+        font-size: 10px;
+        color: var(--red);
+      }
     }
     div label,
     > p {
@@ -56,6 +67,11 @@ const LoginContainer = styled.main`
       width: 100%;
       justify-content: center;
     }
+    legend {
+      margin-top: 10px;
+      font-size: 10px;
+      font-style: italic;
+    }
   }
   > div:last-of-type {
     position: absolute;
@@ -79,26 +95,66 @@ const LoginContainer = styled.main`
 `;
 
 export default function Login() {
+  const { loginUsuario } = useContext(AuthContext);
+
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState({});
+
+  const onChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errores = validarLogin(user);
+    setError(errores);
+    if (Object.keys(errores).length === 0) {
+      loginUsuario(user);
+    }
+  };
+
   return (
     <Layout>
       <LoginContainer>
         <div className="logo">
           <IconMosineAlt />
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="correo">Correo electrónico</label>
-            <Input type="text" />
+            <label htmlFor="email">Correo electrónico*</label>
+            <Input
+              type="email"
+              name="email"
+              placeholder="Escribe tu correo electrónico"
+              value={user.email}
+              onChange={onChange}
+            />
+            {error.email && <p>* {error.email}</p>}
           </div>
           <div>
-            <label htmlFor="password">Contraseña</label>
-            <Input type="text" />
+            <label htmlFor="password">Contraseña*</label>
+            <Input
+              type="password"
+              name="password"
+              placeholder="Escribe tu contraseña"
+              value={user.password}
+              onChange={onChange}
+            />
+            {error.password && <p>* {error.password}</p>}
           </div>
+          <legend>* campos obligatorios</legend>
           <p>No recuerdo mi contraseña</p>
           <Button
             bgColor="var(--purple1)"
             textColor="#FAFAFA"
             borderColor="var(--purple1)"
+            type="submit"
           >
             Iniciar sesión
           </Button>
@@ -116,7 +172,9 @@ export default function Login() {
           >
             <IconGoogle /> Entrar con Google
           </Button>
-          <p>Todavía no tengo una cuenta</p>
+          <Link href="/register">
+            <p>Todavía no tengo una cuenta</p>
+          </Link>
         </div>
       </LoginContainer>
     </Layout>

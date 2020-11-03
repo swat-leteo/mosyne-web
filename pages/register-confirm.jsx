@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
+import Axios from "axios";
 import Link from "next/link";
+import { useEffect } from "react";
 
 import Layout from "../components/layouts/Layout";
 
@@ -53,6 +55,15 @@ const RegisterConfirmContainer = styled.main`
 `;
 
 export default function RegisterConfirm() {
+  useEffect(() => {
+    // const getData = async () => {
+    //   const respuesta = await Axios.get(
+    //     "https://api-mosine.appspot.com/api/users"
+    //   );
+    //   console.log(respuesta);
+    // };
+    // getData();
+  }, []);
   return (
     <Layout>
       <RegisterConfirmContainer>
