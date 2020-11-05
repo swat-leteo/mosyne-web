@@ -31,7 +31,7 @@ const AuthState = (props) => {
       Swal.fire({
         icon: "error",
         title: "¡Error!",
-        text: "Este correo ya está registrado",
+        text: "Este correo ya está registrado.",
       });
     }
   };
@@ -43,7 +43,8 @@ const AuthState = (props) => {
         type: LOGIN_USUARIO,
         payload: data,
       });
-      router.push("/register-confirm");
+      localStorage.setItem("usuario", JSON.stringify(data));
+      // window.location.href = "/register-confirm";
     }
     if (status === 401) {
       Swal.fire({
@@ -57,7 +58,7 @@ const AuthState = (props) => {
       Swal.fire({
         icon: "error",
         title: "¡Error!",
-        text: "No haz verificado tu correo",
+        text: "No haz verificado tu correo.",
       });
     }
   };
