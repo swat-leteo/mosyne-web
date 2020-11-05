@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import styled from "@emotion/styled";
-import Link from "next/link";
 
 import Button from "../components/ui/Button";
 import Image from "../components/ui/Image";
@@ -168,7 +167,6 @@ export default function EditProfile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
     editarPerfil(user);
   };
 

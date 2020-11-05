@@ -4,13 +4,13 @@ const BASE_URL = "https://api-mosine.appspot.com/api";
 
 const request = async (path, method, body) => {
   try {
-    const response = await Axios({
+    const { data, status } = await Axios({
       url: `${BASE_URL}${path}`,
       method,
       data: body,
+      withCredentials: true,
     });
-    console.log(response);
-    return { data: response.data, status: response.status };
+    return { data, status };
   } catch (error) {
     const data = error.response.data || {};
     const status = error.response.status || 500;

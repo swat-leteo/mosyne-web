@@ -9,6 +9,8 @@ import clienteAxios from "../../config/Axios";
 import { GUARDAR_USUARIO, EDITAR_PERFIL_GUARDIAN } from "../../types";
 
 const UserState = (props) => {
+  const router = useRouter();
+
   const initialState = {
     usuario: {},
   };
@@ -24,7 +26,7 @@ const UserState = (props) => {
 
   const editarPerfil = async (usuario) => {
     const { status } = await clienteAxios.put("/users", usuario);
-    if (status === 201) {
+    if (status === 200) {
       localStorage.setItem("usuario", JSON.stringify(usuario));
       dispatch({
         type: EDITAR_PERFIL_GUARDIAN,

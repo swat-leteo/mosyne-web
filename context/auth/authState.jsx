@@ -44,7 +44,7 @@ const AuthState = (props) => {
         payload: data,
       });
       localStorage.setItem("usuario", JSON.stringify(data));
-      // window.location.href = "/register-confirm";
+      window.location.href = "/register-confirm";
     }
     if (status === 401) {
       Swal.fire({
