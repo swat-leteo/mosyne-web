@@ -1,21 +1,13 @@
-import React, { useReducer } from "react";
+import React from "react";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 
 import AuthContext from "./authContext";
-import AuthReducer from "./authReducer";
 
 import clienteAxios from "../../config/Axios";
-import { LOGIN_USUARIO } from "../../types";
 
 const AuthState = (props) => {
   const router = useRouter();
-
-  const initialState = {
-    usuario: {},
-  };
-
-  const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   const registrarUsuario = async (usuario) => {
     const { status } = await clienteAxios.post("/auth/signup", usuario);
@@ -37,14 +29,14 @@ const AuthState = (props) => {
   };
 
   const loginUsuario = async (usuario) => {
-    const { status, data } = await clienteAxios.post("/auth/login", usuario);
+    const { status } = await clienteAxios.post("/auth/login", usuario);
     if (status === 200) {
-      dispatch({
-        type: LOGIN_USUARIO,
-        payload: data,
-      });
-      localStorage.setItem("usuario", JSON.stringify(data));
-      window.location.href = "/register-confirm";
+      router.push("/register-confirm");
+      Swal.fire(
+        "¡Inicio de sesión exitoso!",
+        "Haz iniciado sesión correctamente.",
+        "success"
+      );
     }
     if (status === 401) {
       Swal.fire({
@@ -63,9 +55,16 @@ const AuthState = (props) => {
     }
   };
 
+  const logoutUsuario = async () => {
+    const { status } = await clienteAxios.post("/auth/logout");
+    if (status === 200) {
+      router.push("/");
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ usuario: state.usuario, registrarUsuario, loginUsuario }}
+      value={{ registrarUsuario, loginUsuario, logoutUsuario }}
     >
       {props.children}
     </AuthContext.Provider>

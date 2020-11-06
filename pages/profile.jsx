@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "@emotion/styled";
 
@@ -12,6 +12,7 @@ import Logout from "../components/layouts/Logout";
 import IconPlus from "../components/ui/icons/IconPlus";
 import IconPolice from "../components/ui/icons/IconPolice";
 import IconCruzRoja from "../components/ui/icons/IconCruzRoja";
+import UserContext from "../context/user/userContext";
 
 const ProfileContainer = styled.main`
   width: 100%;
@@ -113,23 +114,37 @@ const ProfileContainer = styled.main`
 
 export default function Profile() {
   const [menu, showMenu] = useState(false);
+
+  const { obtenerUsuario, usuario } = useContext(UserContext);
+
+  const { photo, firstname, lastname } = usuario;
+
+  useEffect(() => {
+    if (Object.keys(usuario).length === 0) {
+      obtenerUsuario();
+    }
+  }, []);
+
   return (
     <Layout display="grid" menu={menu}>
       <Menu menu={menu} showMenu={showMenu} />
       <ProfileContainer>
         <Header>
-          <Logout />
+          <Logout photo={photo} />
         </Header>
         <div className="profile">
-          <Image
-            src="/static/img/dannapaola.png"
-            alt=""
-            width="39px"
-            height="39px"
-          />
+          {photo === "" ? (
+            <IconUserDefault width="39px" height="39px" />
+          ) : (
+            <Image src={photo} width="39px" height="39px" />
+          )}
           <div>
-            <h1>Hola Danna Paola</h1>
-            <p>Editar mi perfil</p>
+            <h1>
+              Hola {firstname} {lastname}
+            </h1>
+            <Link href="/edit-profile">
+              <p>Editar mi perfil</p>
+            </Link>
           </div>
         </div>
         <div className="angels">
@@ -138,7 +153,9 @@ export default function Profile() {
           <div>
             <span></span>
             <Link href="/privacity">
-              <IconPlus width="20px" height="20px" />
+              <>
+                <IconPlus width="20px" height="20px" />
+              </>
             </Link>
           </div>
         </div>

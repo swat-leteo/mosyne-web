@@ -17,17 +17,26 @@ const UserState = (props) => {
 
   const [state, dispatch] = useReducer(UserReducer, initialState);
 
-  const obtenerUsuario = () => {
-    dispatch({
-      type: GUARDAR_USUARIO,
-      payload: JSON.parse(localStorage.getItem("usuario")),
-    });
+  const obtenerUsuario = async () => {
+    const { data, status } = await clienteAxios.get("/users");
+    if (status === 200) {
+      dispatch({
+        type: GUARDAR_USUARIO,
+        payload: data,
+      });
+    } else {
+      router.push("/");
+      Swal.fire({
+        icon: "error",
+        title: "¡Error!",
+        text: "Hubo un error, inicia sesión de nuevo.",
+      });
+    }
   };
 
   const editarPerfil = async (usuario) => {
     const { status } = await clienteAxios.put("/users", usuario);
     if (status === 200) {
-      localStorage.setItem("usuario", JSON.stringify(usuario));
       dispatch({
         type: EDITAR_PERFIL_GUARDIAN,
         payload: usuario,
@@ -47,10 +56,13 @@ const UserState = (props) => {
       });
     }
   };
-
   return (
     <UserContext.Provider
-      value={{ usuario: state.usuario, obtenerUsuario, editarPerfil }}
+      value={{
+        usuario: state.usuario,
+        obtenerUsuario,
+        editarPerfil,
+      }}
     >
       {props.children}
     </UserContext.Provider>

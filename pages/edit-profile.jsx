@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 import Button from "../components/ui/Button";
 import Image from "../components/ui/Image";
 import Input from "../components/ui/Input";
 import Loader from "../components/ui/Loader";
-
 import Layout from "../components/layouts/Layout";
 
 import IconUserDefault from "../components/ui/icons/IconUserDefault";
@@ -93,10 +93,16 @@ const EditProfileContainer = styled.main`
           width: 100%;
         }
       }
-      button {
-        width: 60%;
-        margin: 20px auto 10px;
-        justify-content: center;
+      .buttons {
+        flex-direction: row;
+        padding: 10px 0 20px;
+        button {
+          justify-content: center;
+          margin: 0;
+          :first-of-type {
+            margin-right: 10px;
+          }
+        }
       }
     }
   }
@@ -276,15 +282,26 @@ export default function EditProfile() {
                 value={cp}
               />
             </div>
-            <Button
-              bgColor="var(--purple1)"
-              textColor="#FAFAFA"
-              borderColor="var(--purple1)"
-              shadow="true"
-              type="submit"
-            >
-              Guardar cambios
-            </Button>
+            <div className="buttons">
+              <Link href="/profile">
+                <Button
+                  bgColor="transparent"
+                  textColor="var(--purple1)"
+                  borderColor="var(--purple1)"
+                >
+                  Cancelar
+                </Button>
+              </Link>
+              <Button
+                bgColor="var(--purple1)"
+                textColor="#FAFAFA"
+                borderColor="var(--purple1)"
+                shadow="true"
+                type="submit"
+              >
+                Guardar cambios
+              </Button>
+            </div>
           </form>
         </div>
       </EditProfileContainer>
