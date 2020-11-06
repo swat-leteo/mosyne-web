@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "@emotion/styled";
 
 import Image from "../ui/Image";
@@ -6,6 +6,7 @@ import Image from "../ui/Image";
 import IconUserDefault from "../ui/icons/IconUserDefault";
 
 import AuthContext from "../../context/auth/authContext";
+import UserContext from "../../context/user/userContext";
 
 const LogoutContainer = styled.div`
   display: flex;
@@ -20,9 +21,17 @@ const LogoutContainer = styled.div`
   }
 `;
 
-const Logout = ({ photo }) => {
+const Logout = () => {
   const { logoutUsuario } = useContext(AuthContext);
+  const { usuario, obtenerUsuario } = useContext(UserContext);
 
+  const { photo } = usuario;
+
+  useEffect(() => {
+    if (Object.keys(usuario).length === 0) {
+      obtenerUsuario();
+    }
+  }, [usuario]);
   return (
     <LogoutContainer>
       {photo === "" ? (

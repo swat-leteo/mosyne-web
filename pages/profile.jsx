@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styled from "@emotion/styled";
 
 import Image from "../components/ui/Image";
@@ -115,6 +116,8 @@ const ProfileContainer = styled.main`
 export default function Profile() {
   const [menu, showMenu] = useState(false);
 
+  const router = useRouter();
+
   const { obtenerUsuario, usuario } = useContext(UserContext);
 
   const { photo, firstname, lastname } = usuario;
@@ -130,7 +133,7 @@ export default function Profile() {
       <Menu menu={menu} showMenu={showMenu} />
       <ProfileContainer>
         <Header>
-          <Logout photo={photo} />
+          <Logout />
         </Header>
         <div className="profile">
           {photo === "" ? (
@@ -152,11 +155,11 @@ export default function Profile() {
           <p>Agrega a tus angeles que cuidarás</p>
           <div>
             <span></span>
-            <Link href="/privacity">
-              <>
-                <IconPlus width="20px" height="20px" />
-              </>
-            </Link>
+            <IconPlus
+              width="20px"
+              height="20px"
+              onClick={() => router.push("/privacity")}
+            />
           </div>
         </div>
         <div className="emergency">

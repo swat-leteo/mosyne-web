@@ -78,6 +78,7 @@ const AddAngelDiseasesContainer = styled.main`
       button {
         margin: 0;
         justify-content: center;
+        align-items: center;
         font-size: 10px;
         &:first-of-type {
           margin-right: 10px;
@@ -101,7 +102,7 @@ export default function AddAngelDiseases() {
         <Bullets bullet="3" />
         <form>
           <div>
-            <label htmlFor="">Tipo de sangre</label>
+            <label htmlFor="">Tipo de sangre*</label>
             <Input type="text" />
           </div>
           <div className="life">
@@ -114,7 +115,7 @@ export default function AddAngelDiseases() {
             </div>
           </div>
           <div className="detonante">
-            <label htmlFor="">Detonante del Alzheimer</label>
+            <label htmlFor="">Detonante del Alzheimer*</label>
             <div>
               <input type="radio" name="detonante" value="herencia" />
               <label htmlFor="detonante">Herencía</label>
@@ -175,13 +176,15 @@ export default function AddAngelDiseases() {
             ></textarea>
           </div>
           <div className="buttons">
-            <Button
-              bgColor="transparent"
-              textColor="var(--purple1)"
-              borderColor="var(--purple1)"
-            >
-              Regresar
-            </Button>
+            <Link href="/add-angel-contact">
+              <Button
+                bgColor="transparent"
+                textColor="var(--purple1)"
+                borderColor="var(--purple1)"
+              >
+                Regresar
+              </Button>
+            </Link>
             <Link href="/generate-qr">
               <Button
                 bgColor="var(--purple1)"

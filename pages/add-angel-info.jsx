@@ -41,14 +41,17 @@ const AddAngelInfoContainer = styled.main`
         border-color: var(--gray);
       }
     }
-    .names,
-    .state,
-    .address,
+
     .buttons {
       flex-direction: row;
     }
     .names div:first-of-type {
       margin-right: 20px;
+    }
+    .names,
+    .state,
+    .address {
+      flex-direction: ${(props) => (props.menu ? "column" : "row")};
     }
     .state {
       width: 100%;
@@ -79,7 +82,7 @@ export default function AddAngelInfo() {
   return (
     <Layout display="grid" menu={menu}>
       <Menu menu={menu} showMenu={showMenu} />
-      <AddAngelInfoContainer>
+      <AddAngelInfoContainer menu={menu}>
         <Header>
           <Logout />
         </Header>
@@ -88,16 +91,16 @@ export default function AddAngelInfo() {
         <form>
           <div className="names">
             <div>
-              <label htmlFor="">Nombre</label>
+              <label htmlFor="">Nombre*</label>
               <Input type="text" placeholder="Mínimo 2 caracteres" />
             </div>
             <div>
-              <label htmlFor="">Apellido</label>
+              <label htmlFor="">Apellido*</label>
               <Input type="text" placeholder="Mínimo 3 caracteres" />
             </div>
           </div>
           <div>
-            <label htmlFor="">Nacionalidad</label>
+            <label htmlFor="">Nacionalidad*</label>
             <Input type="text" placeholder="País de procedencia" />
           </div>
           <div>
@@ -139,13 +142,15 @@ export default function AddAngelInfo() {
             <Input type="text" />
           </div>
           <div className="buttons">
-            <Button
-              bgColor="transparent"
-              textColor="var(--purple1)"
-              borderColor="var(--purple1)"
-            >
-              Regresar
-            </Button>
+            <Link href="/profile">
+              <Button
+                bgColor="transparent"
+                textColor="var(--purple1)"
+                borderColor="var(--purple1)"
+              >
+                Cancelar
+              </Button>
+            </Link>
             <Link href="/add-angel-contact">
               <Button
                 bgColor="var(--purple1)"
