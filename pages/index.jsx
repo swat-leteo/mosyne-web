@@ -1,12 +1,14 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import Link from "next/link";
+import GoogleLogin from "react-google-login";
 
 import Layout from "../components/layouts/Layout";
 import Header from "../components/layouts/Header";
 
 import Button from "../components/ui/Button";
 import Bullets from "../components/ui/Bullets";
+import ButtonGoogle from "../components/ui/ButtonGoogle";
 
 import IconQR from "../components/ui/icons/IconQR";
 import IconGoogle from "../components/ui/icons/IconGoogle";
@@ -144,6 +146,9 @@ const SmallHeroContainer = styled.div`
 `;
 
 export default function Home() {
+  const responseGoogle = (response) => {
+    console.log(response);
+  };
   return (
     <Layout>
       <Header whiteColor="true">
@@ -158,15 +163,13 @@ export default function Home() {
             Generamos <span>plantillas QR</span> para casos de emergencia en
             pacientes que sufren <span>Alzheimer</span>
           </p>
-          <Button
+
+          <ButtonGoogle
             bgColor="#DB4A39"
             textColor="#FAFAFA"
             borderColor="#DB4A39"
             shadow="true"
-          >
-            <IconGoogle />
-            Registrate con Google
-          </Button>
+          />
           <Link href="/info">
             <Button
               bgColor="transparent"

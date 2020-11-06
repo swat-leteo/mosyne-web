@@ -1,16 +1,16 @@
 export default function validarRegister(valores) {
   let errores = {};
 
-  if (valores.nombre.trim() === "") {
-    errores.nombre = "Completa este campo";
-  } else if (valores.nombre.length < 2) {
-    errores.nombre = "Mínimo 2 caracteres";
+  if (valores.firstname.trim() === "") {
+    errores.firstname = "Completa este campo";
+  } else if (valores.firstname.length < 2) {
+    errores.firstname = "Mínimo 2 caracteres";
   }
 
-  if (valores.apellido.trim() === "") {
-    errores.apellido = "Completa este campo";
-  } else if (valores.apellido.length < 3) {
-    errores.apellido = "Mínimo 3 caracteres";
+  if (valores.lastname.trim() === "") {
+    errores.lastname = "Completa este campo";
+  } else if (valores.lastname.length < 3) {
+    errores.lastname = "Mínimo 3 caracteres";
   }
 
   if (valores.email.trim() === "") {

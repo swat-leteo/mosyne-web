@@ -13,6 +13,7 @@ import IconPlus from "../components/ui/icons/IconPlus";
 import IconPolice from "../components/ui/icons/IconPolice";
 import IconCruzRoja from "../components/ui/icons/IconCruzRoja";
 import UserContext from "../context/user/userContext";
+import IconUserDefault from "../components/ui/icons/IconUserDefault";
 
 const ProfileContainer = styled.main`
   width: 100%;
@@ -134,7 +135,7 @@ export default function Profile() {
         </Header>
         <div className="profile">
           {photo === "" ? (
-            <IconUserDefault width="39px" height="39px" />
+            <IconUserDefault fill="#000000" width="39px" height="39px" />
           ) : (
             <Image src={photo} width="39px" height="39px" />
           )}
