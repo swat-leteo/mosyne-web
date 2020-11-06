@@ -2,6 +2,7 @@
 export const REGISTRAR_USUARIO = "REGISTRAR_USUARIO";
 export const LOGIN_USUARIO = "LOGIN_USUARIO";
 export const LOGOUT_USUARIO = "LOGOUT_USUARIO";
+export const LOGIN_GOOGLE = "LOGIN_GOOGLE";
 
 // Users
 export const GUARDAR_USUARIO = "GUARDAR_USUARIO";

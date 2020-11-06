@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useReducer } from "react";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 
 import AuthContext from "./authContext";
+import AuthReducer from "./authReducer";
 
 import clienteAxios from "../../config/Axios";
 
+import { LOGIN_GOOGLE } from "../../types";
+
 const AuthState = (props) => {
   const router = useRouter();
+
+  const initialState = {
+    usuario: {},
+  };
+
+  const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   const registrarUsuario = async (usuario) => {
     const { status } = await clienteAxios.post("/auth/signup", usuario);
@@ -62,9 +71,23 @@ const AuthState = (props) => {
     }
   };
 
+  const registrarGoogle = (usuario) => {
+    dispatch({
+      type: LOGIN_GOOGLE,
+      payload: usuario,
+    });
+    router.push("/info");
+  };
+
   return (
     <AuthContext.Provider
-      value={{ registrarUsuario, loginUsuario, logoutUsuario }}
+      value={{
+        usuario: state.usuario,
+        registrarUsuario,
+        loginUsuario,
+        logoutUsuario,
+        registrarGoogle,
+      }}
     >
       {props.children}
     </AuthContext.Provider>

@@ -35,7 +35,7 @@ const Logout = () => {
   return (
     <LogoutContainer>
       {photo === "" ? (
-        <IconUserDefault width="18px" height="18px" />
+        <IconUserDefault fill="#000000" width="18px" height="18px" />
       ) : (
         <Image src={photo} width="18px" height="18px" />
       )}

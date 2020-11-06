@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Link from "next/link";
 import styled from "@emotion/styled";
 
@@ -99,19 +99,19 @@ const RegisterContainer = styled.main`
 `;
 
 export default function Register() {
-  const { registrarUsuario } = useContext(AuthContext);
+  const { registrarUsuario, usuario } = useContext(AuthContext);
 
   const [error, setError] = useState({});
 
   const [user, setUser] = useState({
-    nombre: "",
-    apellido: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
     confirmar: "",
   });
 
-  const { nombre, apellido, email, password, confirmar } = user;
+  const { firstname, lastname, email, password, confirmar } = user;
 
   const onChange = (e) => {
     setUser({
@@ -127,11 +127,21 @@ export default function Register() {
       registrarUsuario({
         email,
         password,
-        firstname: user.nombre,
-        lastname: user.apellido,
+        firstname,
+        lastname,
       });
     }
   };
+
+  useEffect(() => {
+    if (Object.keys(usuario).length !== 0) {
+      setUser({
+        ...usuario,
+        password: "",
+        confirmar: "",
+      });
+    }
+  }, []);
 
   return (
     <Layout>
@@ -146,22 +156,22 @@ export default function Register() {
               <Input
                 type="text"
                 placeholder="Mínimo 2 caracteres"
-                name="nombre"
-                value={nombre}
+                name="firstname"
+                value={firstname}
                 onChange={onChange}
               />
-              {error.nombre && <p>* {error.nombre}</p>}
+              {error.firstname && <p>* {error.firstname}</p>}
             </div>
             <div>
               <label htmlFor="apellido">Apellido*</label>
               <Input
                 type="text"
                 placeholder="Mínimo 3 caracteres"
-                name="apellido"
-                value={apellido}
+                name="lastname"
+                value={lastname}
                 onChange={onChange}
               />
-              {error.apellido && <p>* {error.apellido}</p>}
+              {error.lastname && <p>* {error.lastname}</p>}
             </div>
           </div>
           <div className="correo">
