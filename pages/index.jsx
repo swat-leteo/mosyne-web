@@ -194,13 +194,13 @@ export default function Home() {
         </div>
         <div className="instructions__container">
           <p>Registrate</p>
-          <p>Agrega la información de tu angel</p>
+          <p>Agrega la información de tu ángel</p>
           <p>Descarga el PDF generado</p>
         </div>
       </ProcedureContainer>
       <SmallHeroContainer bgURL="/static/img/amalos.jpeg">
-        <p>AMALOS</p>
-        <p>AMALOS</p>
+        <p>ÁMALOS</p>
+        <p>ÁMALOS</p>
       </SmallHeroContainer>
       <div
         css={css`
@@ -310,8 +310,8 @@ export default function Home() {
         </div>
       </div>
       <SmallHeroContainer bgURL="/static/img/cuidalos.jpeg">
-        <p>CUIDALOS</p>
-        <p>CUIDALOS</p>
+        <p>CUÍDALOS</p>
+        <p>CUÍDALOS</p>
       </SmallHeroContainer>
       <div
         css={css`

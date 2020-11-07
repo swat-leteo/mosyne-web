@@ -17,8 +17,17 @@ const AngelState = (props) => {
 
   const [state, dispatch] = useReducer(AngelReducer, initialState);
 
+  const agregarAngelInfo = (angelinfo) => {
+    dispatch({
+      type: AGREGAR_ANGEL_INFO,
+      payload: angelinfo,
+    });
+  };
+
   return (
-    <AngelContext.Provider value={{ angelinfo: state.angelinfo }}>
+    <AngelContext.Provider
+      value={{ angelinfo: state.angelinfo, agregarAngelInfo }}
+    >
       {props.children}
     </AngelContext.Provider>
   );
