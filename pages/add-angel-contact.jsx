@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useState, useContext } from "react";
 
 import Header from "../components/layouts/Header";
 import Layout from "../components/layouts/Layout";
@@ -10,6 +11,11 @@ import Menu from "../components/layouts/Menu";
 import Bullets from "../components/ui/Bullets";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
+
+import UserContext from "../context/user/userContext";
+import AngelContext from "../context/angel/angelContext";
+
+import validarAngelContact from "../validation/validarAngelContact";
 
 const AddAngelContactContainer = styled.main`
   font-family: var(--font);
@@ -35,6 +41,17 @@ const AddAngelContactContainer = styled.main`
         font-weight: 700;
         color: var(--violet);
         font-size: 12px;
+      }
+      select {
+        margin-top: 5px;
+        color: var(--black);
+        background-color: var(--gray);
+        border-color: var(--gray);
+      }
+      p {
+        margin: 5px 0 0;
+        font-size: 10px;
+        color: var(--red);
       }
     }
     .contact,
@@ -66,7 +83,58 @@ const AddAngelContactContainer = styled.main`
 `;
 
 export default function AddAngelContact() {
+  const router = useRouter();
+
+  const { usuario } = useContext(UserContext);
+  const { agregarAngelContact } = useContext(AngelContext);
+
   const [menu, showMenu] = useState(false);
+  const [error, setError] = useState({});
+
+  const [contact, setContact] = useState({
+    angel_relation: "",
+    firstname: "",
+    lastname: "",
+    cel: "",
+    phone: "",
+  });
+
+  const handleChangeEmergency = (e) => {
+    if (e.target.checked) {
+      setContact({
+        ...contact,
+        firstname: usuario.firstname,
+        lastname: usuario.lastname,
+        phone: usuario.phone,
+        cel: usuario.cel,
+      });
+    } else {
+      setContact({
+        ...contact,
+        firstname: "",
+        lastname: "",
+        cel: "",
+        phone: "",
+      });
+    }
+  };
+
+  const handleChange = (e) => {
+    setContact({
+      ...contact,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errores = validarAngelContact(contact);
+    setError(errores);
+    if (Object.keys(errores).length === 0) {
+      agregarAngelContact(contact);
+      router.push("/add-angel-diseases");
+    }
+  };
 
   return (
     <Layout display="grid" menu={menu}>
@@ -77,33 +145,79 @@ export default function AddAngelContact() {
         </Header>
         <h1>Contactos de emergencia</h1>
         <Bullets bullet="2" />
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="contact">
             <label htmlFor="">Soy contacto de emergencia</label>
-            <input type="checkbox" />
+            <input type="checkbox" onChange={handleChangeEmergency} />
+          </div>
+          <div>
+            <label htmlFor="angel_relation">¿Qué eres de tu angel?*</label>
+            <select
+              name="angel_relation"
+              onChange={handleChange}
+              value={contact.angel_relation}
+            >
+              <option value="">-- Selecciona --</option>
+              <option value="son">Hijo</option>
+              <option value="daugther">Hija</option>
+              <option value="mom">Madre</option>
+              <option value="dad">Padre</option>
+              <option value="grandma">Abuela</option>
+              <option value="grandpa">Abuelo</option>
+              <option value="grandchild">Nieto</option>
+              <option value="granddaugther">Nieta</option>
+              <option value="friend">Amig@</option>
+              <option value="uncle">Tio</option>
+              <option value="aunt">Tia</option>
+              <option value="cousin">Prim@</option>
+              <option value="other">Otro</option>
+            </select>
+            {error.angel_relation && <p>* {error.angel_relation}</p>}
           </div>
           <div className="names">
             <div>
               <label htmlFor="">Nombre*</label>
-              <Input type="text" placeholder="Mínimo 2 caracteres" />
+              <Input
+                type="text"
+                placeholder="Mínimo 2 caracteres"
+                name="firstname"
+                onChange={handleChange}
+                value={contact.firstname}
+              />
+              {error.firstname && <p>* {error.firstname}</p>}
             </div>
             <div>
               <label htmlFor="">Apellido*</label>
-              <Input type="text" placeholder="Mínimo 3 caracteres" />
+              <Input
+                type="text"
+                placeholder="Mínimo 3 caracteres"
+                name="lastname"
+                onChange={handleChange}
+                value={contact.lastname}
+              />
+              {error.lastname && <p>* {error.lastname}</p>}
             </div>
-          </div>
-          <div>
-            <label htmlFor="">Parentesco con el angel</label>
-            <Input type="text" />
           </div>
           <div className="telephone">
             <div>
               <label htmlFor="">Teléfono de casa*</label>
-              <Input type="text" />
+              <Input
+                type="text"
+                name="phone"
+                onChange={handleChange}
+                value={contact.phone}
+              />
+              {error.phone && <p>* {error.phone}</p>}
             </div>
             <div>
               <label htmlFor="">Teléfono celular*</label>
-              <Input type="text" />
+              <Input
+                type="text"
+                name="cel"
+                onChange={handleChange}
+                value={contact.cel}
+              />
+              {error.cel && <p>* {error.cel}</p>}
             </div>
           </div>
           <div className="buttons">
@@ -116,16 +230,16 @@ export default function AddAngelContact() {
                 Regresar
               </Button>
             </Link>
-            <Link href="/add-angel-diseases">
-              <Button
-                bgColor="var(--purple1)"
-                textColor="#FAFAFA"
-                borderColor="var(--purple1)"
-                shadow="true"
-              >
-                Siguiente
-              </Button>
-            </Link>
+
+            <Button
+              bgColor="var(--purple1)"
+              textColor="#FAFAFA"
+              borderColor="var(--purple1)"
+              shadow="true"
+              type="submit"
+            >
+              Siguiente
+            </Button>
           </div>
         </form>
       </AddAngelContactContainer>

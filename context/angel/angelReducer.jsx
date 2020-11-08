@@ -12,7 +12,11 @@ const AngelReducer = (state, action) => {
         ...state,
         angelinfo: action.payload,
       };
-
+    case AGREGAR_ANGEL_CONTACT:
+      return {
+        ...state,
+        contacts: action.payload,
+      };
     default:
       return state;
   }

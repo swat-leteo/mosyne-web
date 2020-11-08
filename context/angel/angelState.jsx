@@ -24,9 +24,20 @@ const AngelState = (props) => {
     });
   };
 
+  const agregarAngelContact = (contact) => {
+    dispatch({
+      type: AGREGAR_ANGEL_CONTACT,
+      payload: contact,
+    });
+  };
+
   return (
     <AngelContext.Provider
-      value={{ angelinfo: state.angelinfo, agregarAngelInfo }}
+      value={{
+        angelinfo: state.angelinfo,
+        agregarAngelInfo,
+        agregarAngelContact,
+      }}
     >
       {props.children}
     </AngelContext.Provider>
