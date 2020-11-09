@@ -207,22 +207,22 @@ export default function AddAngelInfo() {
             </div>
           </div>
           <div>
-            <label htmlFor="guardian_relation">Parentestco*</label>
+            <label htmlFor="guardian_relation">Parentesco*</label>
             <select name="guardian_relation" onChange={handleChange}>
               <option value="">-- Selecciona --</option>
-              <option value="son">Hijo</option>
-              <option value="daugther">Hija</option>
-              <option value="mom">Madre</option>
-              <option value="dad">Padre</option>
-              <option value="grandma">Abuela</option>
-              <option value="grandpa">Abuelo</option>
-              <option value="grandchild">Nieto</option>
-              <option value="granddaugther">Nieta</option>
-              <option value="friend">Amig@</option>
-              <option value="uncle">Tio</option>
-              <option value="aunt">Tia</option>
-              <option value="cousin">Prim@</option>
-              <option value="other">Otro</option>
+              <option value="hijo">Hijo</option>
+              <option value="hija">Hija</option>
+              <option value="madre">Madre</option>
+              <option value="padre">Padre</option>
+              <option value="abuela">Abuela</option>
+              <option value="abuelo">Abuelo</option>
+              <option value="nieto">Nieto</option>
+              <option value="nieta">Nieta</option>
+              <option value="amig@">Amig@</option>
+              <option value="tio">Tio</option>
+              <option value="tia">Tia</option>
+              <option value="prim@">Prim@</option>
+              <option value="otro">Otro</option>
             </select>
             {error.guardian_relation && <p>* {error.guardian_relation}</p>}
           </div>

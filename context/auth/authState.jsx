@@ -40,7 +40,7 @@ const AuthState = (props) => {
   const loginUsuario = async (usuario) => {
     const { status } = await clienteAxios.post("/auth/login", usuario);
     if (status === 200) {
-      router.push("/register-confirm");
+      window.location = "/register-confirm";
       Swal.fire(
         "¡Inicio de sesión exitoso!",
         "Haz iniciado sesión correctamente.",

@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
-import Header from "../components/layouts/Header";
+import Link from "next/link";
 
+import Header from "../components/layouts/Header";
 import Layout from "../components/layouts/Layout";
 import Logout from "../components/layouts/Logout";
 import Menu from "../components/layouts/Menu";
@@ -71,13 +72,15 @@ export default function GenerateQR() {
           </li>
         </ol>
         <div className="buttons">
-          <Button
-            bgColor="transparent"
-            textColor="var(--purple1)"
-            borderColor="var(--purple1)"
-          >
-            Ir al inicio
-          </Button>
+          <Link href="/profile">
+            <Button
+              bgColor="transparent"
+              textColor="var(--purple1)"
+              borderColor="var(--purple1)"
+            >
+              Ir al inicio
+            </Button>
+          </Link>
           <Button
             bgColor="var(--purple1)"
             textColor="#FAFAFA"

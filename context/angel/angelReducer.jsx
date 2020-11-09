@@ -15,7 +15,17 @@ const AngelReducer = (state, action) => {
     case AGREGAR_ANGEL_CONTACT:
       return {
         ...state,
-        contacts: action.payload,
+        contacts: [action.payload],
+      };
+    case AGREGAR_ANGEL_DISEASES:
+      return {
+        ...state,
+        angelinfo: Object.assign(state.angelinfo, action.payload),
+      };
+    case AGREGAR_ANGEL:
+      return {
+        ...state,
+        angelid: action.payload,
       };
     default:
       return state;
