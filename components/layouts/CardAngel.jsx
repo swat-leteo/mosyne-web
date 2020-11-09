@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import Button from "../ui/Button";
 import Image from "../ui/Image";
+import ButtonQR from "../ui/ButtonQR";
 
 import IconCloud from "../ui/icons/IconCloud";
 
@@ -22,18 +23,6 @@ const CardAngelContainer = styled.div`
       margin: 0;
       font-size: 12px;
       color: var(--black);
-    }
-  }
-  > button {
-    margin: 10px 0 0 10px;
-    width: ${(props) => (props.menu === true ? "60%" : "45%")};
-    justify-content: center;
-    align-items: center;
-    font-size: 9px;
-    padding: 2px;
-    border-radius: 2.5px;
-    svg {
-      margin-right: 5px;
     }
   }
   ul {
@@ -70,13 +59,7 @@ const CardAngel = ({ tab, menu }) => {
           <p>78 años</p>
         </div>
       </div>
-      <Button
-        bgColor="var(--blue)"
-        textColor="#FAFAFA"
-        borderColor="var(--blue)"
-      >
-        <IconCloud /> Descargar codigo QR
-      </Button>
+      <ButtonQR id={"da7d9208-20c7-4859-84c4-333fc57950ab"} />
       <ul>
         <Link href="/profile-angel-data">
           <li>Datos personales</li>

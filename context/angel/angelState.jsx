@@ -73,6 +73,7 @@ const AngelState = (props) => {
     <AngelContext.Provider
       value={{
         angelinfo: state.angelinfo,
+        angelid: state.angelid,
         agregarAngelInfo,
         agregarAngelContact,
         agregarAngelDisease,

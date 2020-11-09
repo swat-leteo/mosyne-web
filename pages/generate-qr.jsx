@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Link from "next/link";
 
 import Header from "../components/layouts/Header";
@@ -8,6 +8,10 @@ import Logout from "../components/layouts/Logout";
 import Menu from "../components/layouts/Menu";
 
 import Button from "../components/ui/Button";
+import ButtonQR from "../components/ui/ButtonQR";
+import Loader from "../components/ui/Loader";
+
+import AngelContext from "../context/angel/angelContext";
 
 const GenerateQRContainer = styled.main`
   height: 100vh;
@@ -20,6 +24,12 @@ const GenerateQRContainer = styled.main`
     font-size: 12px;
     color: var(--blue);
     border-bottom: 1px solid var(--blue);
+  }
+  > a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
   }
   ol {
     padding: 0 10px 0 30px;
@@ -35,18 +45,19 @@ const GenerateQRContainer = styled.main`
   .buttons {
     padding: 0 10px;
     display: flex;
+    justify-content: center;
+    width: 100%;
     button {
       margin: 0;
       justify-content: center;
-      :first-of-type {
-        margin-right: 10px;
-      }
     }
   }
 `;
 
 export default function GenerateQR() {
   const [menu, showMenu] = useState(false);
+
+  const { angelid } = useContext(AngelContext);
 
   return (
     <Layout display="grid" menu={menu}>
@@ -55,6 +66,7 @@ export default function GenerateQR() {
         <Header>
           <Logout />
         </Header>
+        <ButtonQR id={angelid} />
         <h1>Instrucciones</h1>
         <ol>
           <li>
@@ -81,14 +93,6 @@ export default function GenerateQR() {
               Ir al inicio
             </Button>
           </Link>
-          <Button
-            bgColor="var(--purple1)"
-            textColor="#FAFAFA"
-            borderColor="var(--purple1)"
-            shadow="true"
-          >
-            Descargar QR
-          </Button>
         </div>
       </GenerateQRContainer>
     </Layout>
