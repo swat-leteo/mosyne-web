@@ -13,8 +13,10 @@ import Logout from "../components/layouts/Logout";
 import IconPlus from "../components/ui/icons/IconPlus";
 import IconPolice from "../components/ui/icons/IconPolice";
 import IconCruzRoja from "../components/ui/icons/IconCruzRoja";
-import UserContext from "../context/user/userContext";
 import IconUserDefault from "../components/ui/icons/IconUserDefault";
+
+import UserContext from "../context/user/userContext";
+import AngelContext from "../context/angel/angelContext";
 
 const ProfileContainer = styled.main`
   width: 100%;
@@ -64,9 +66,10 @@ const ProfileContainer = styled.main`
         height: 40px;
         border: 1px dashed black;
         border-radius: 20px;
+        margin-right: 15px;
       }
-      svg {
-        margin-left: 20px;
+      div {
+        margin-right: 15px;
       }
     }
   }
@@ -120,6 +123,7 @@ export default function Profile() {
   const router = useRouter();
 
   const { obtenerUsuario, usuario } = useContext(UserContext);
+  const { angels, obtenerAngeles } = useContext(AngelContext);
 
   const { photo, firstname, lastname } = usuario;
 
@@ -127,7 +131,10 @@ export default function Profile() {
     if (Object.keys(usuario).length === 0) {
       obtenerUsuario();
     }
-  }, []);
+    if (angels.length === 0) {
+      obtenerAngeles();
+    }
+  }, [angels]);
 
   return (
     <Layout display="grid" menu={menu}>
@@ -155,7 +162,27 @@ export default function Profile() {
           <h2>Tus angeles</h2>
           <p>Agrega a tus angeles que cuidarás</p>
           <div>
-            <span></span>
+            {angels.length === 0 ? (
+              <span></span>
+            ) : (
+              <>
+                {angels.map((angel) => (
+                  <Link href={`/profile-angel-data/${angel.id}`} key={angel.id}>
+                    <div>
+                      {angel.photo === "" ? (
+                        <IconUserDefault
+                          fill="#000000"
+                          width="25px"
+                          height="25px"
+                        />
+                      ) : (
+                        <Image src={angel.photo} width="25px" height="25px" />
+                      )}
+                    </div>
+                  </Link>
+                ))}
+              </>
+            )}
             <IconPlus
               width="20px"
               height="20px"

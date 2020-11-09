@@ -44,7 +44,7 @@ const CardAngelContainer = styled.div`
   }
 `;
 
-const CardAngel = ({ tab, menu }) => {
+const CardAngel = ({ tab, menu, id }) => {
   return (
     <CardAngelContainer tab={tab} menu={menu}>
       <div className="info">
@@ -59,15 +59,15 @@ const CardAngel = ({ tab, menu }) => {
           <p>78 años</p>
         </div>
       </div>
-      <ButtonQR id={"da7d9208-20c7-4859-84c4-333fc57950ab"} />
+      <ButtonQR id={id} />
       <ul>
-        <Link href="/profile-angel-data">
+        <Link href={`/profile-angel-data/${id}`}>
           <li>Datos personales</li>
         </Link>
-        <Link href="/profile-angel-contacts">
+        <Link href={`/profile-angel-contacts/${id}`}>
           <li>Contactos de emergencia</li>
         </Link>
-        <Link href="/profile-angel-diseases">
+        <Link href={`/profile-angel-diseases/${id}`}>
           <li>Padecimientos y síntomas</li>
         </Link>
       </ul>

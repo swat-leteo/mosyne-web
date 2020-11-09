@@ -15,8 +15,7 @@ const ButtonQR = ({ id }) => {
         width: 50%;
         button {
           margin: 10px 0 0 10px;
-          width: 50%;
-          width: ${(props) => (props.menu === true ? "60%" : "45%")};
+          width: 70%;
           justify-content: center;
           align-items: center;
           font-size: 9px;

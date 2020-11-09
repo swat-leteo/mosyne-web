@@ -14,12 +14,13 @@ const request = async (path, method, body) => {
   } catch (error) {
     const data = error.response.data || {};
     const status = error.response.status || 500;
+    console.log(data);
     return { data, status };
   }
 };
 
 export const clienteAxios = {
-  get: async (path, data) => request(path, "GET", data),
+  get: async (path) => request(path, "GET"),
   post: async (path, data) => request(path, "POST", data),
   put: async (path, data) => request(path, "PUT", data),
 };

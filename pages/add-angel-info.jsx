@@ -148,7 +148,7 @@ export default function AddAngelInfo() {
   });
 
   const readImageFile = () => {
-    const imageFile = document.getElementById("inputImage").files[0];
+    const imageFile = document.getElementById("inputImageAngel").files[0];
     const reader = new FileReader();
     reader.readAsDataURL(imageFile);
     reader.onload = () => setAngel({ ...angel, photo: reader.result });
@@ -198,7 +198,7 @@ export default function AddAngelInfo() {
               <input
                 type="file"
                 accept="image/*"
-                id="inputImage"
+                id="inputImageAngel"
                 onChange={readImageFile}
               />
               {angel.photo.trim() === ""

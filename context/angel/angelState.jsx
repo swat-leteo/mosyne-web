@@ -9,6 +9,8 @@ import {
   AGREGAR_ANGEL_CONTACT,
   AGREGAR_ANGEL_DISEASES,
   AGREGAR_ANGEL,
+  OBTENER_ANGELES,
+  OBTENER_ANGEL,
 } from "../../types";
 
 import Swal from "sweetalert2";
@@ -18,6 +20,7 @@ const AngelState = (props) => {
     angelinfo: {},
     contacts: [],
     angelid: "",
+    angels: [],
   };
 
   const [state, dispatch] = useReducer(AngelReducer, initialState);
@@ -69,15 +72,38 @@ const AngelState = (props) => {
     }
   };
 
+  const obtenerAngeles = async () => {
+    const { status, data } = await clienteAxios.get("/angels");
+    if (status === 200) {
+      dispatch({
+        type: OBTENER_ANGELES,
+        payload: data,
+      });
+    }
+  };
+
+  const obtenerAngel = async (id) => {
+    const { status, data } = await clienteAxios.get(`/angels/${id}`);
+    if (status === 200) {
+      dispatch({
+        type: OBTENER_ANGEL,
+        payload: data,
+      });
+    }
+  };
+
   return (
     <AngelContext.Provider
       value={{
         angelinfo: state.angelinfo,
         angelid: state.angelid,
+        angels: state.angels,
         agregarAngelInfo,
         agregarAngelContact,
         agregarAngelDisease,
         agregarAngel,
+        obtenerAngeles,
+        obtenerAngel,
       }}
     >
       {props.children}

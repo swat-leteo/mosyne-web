@@ -1,17 +1,18 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
-import Header from "../components/layouts/Header";
-import Layout from "../components/layouts/Layout";
-import Logout from "../components/layouts/Logout";
-import Menu from "../components/layouts/Menu";
-import CardAngel from "../components/layouts/CardAngel";
+import Header from "../../components/layouts/Header";
+import Layout from "../../components/layouts/Layout";
+import Logout from "../../components/layouts/Logout";
+import Menu from "../../components/layouts/Menu";
+import CardAngel from "../../components/layouts/CardAngel";
 
-import Button from "../components/ui/Button";
-import Input from "../components/ui/Input";
+import Button from "../../components/ui/Button";
+import Input from "../../components/ui/Input";
 
-import IconPlus from "../components/ui/icons/IconPlus";
+import IconPlus from "../../components/ui/icons/IconPlus";
 
 const ProfileAngelDiseasesContainer = styled.section`
   font-family: var(--font);
@@ -85,6 +86,14 @@ const ProfileAngelDiseasesContainer = styled.section`
 
 export default function ProfileAngelDiseases() {
   const [menu, showMenu] = useState(false);
+
+  const router = useRouter();
+  const {
+    query: { id },
+  } = router;
+
+  console.log(id);
+
   return (
     <Layout display="grid" menu={menu}>
       <Menu menu={menu} showMenu={showMenu} />
@@ -92,7 +101,7 @@ export default function ProfileAngelDiseases() {
         <Header>
           <Logout />
         </Header>
-        <CardAngel tab="3" menu={menu} />
+        <CardAngel tab="3" menu={menu} id={id} />
         <form>
           <div>
             <label htmlFor="">Tipo de sangre</label>

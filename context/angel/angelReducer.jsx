@@ -3,11 +3,14 @@ import {
   AGREGAR_ANGEL_CONTACT,
   AGREGAR_ANGEL_DISEASES,
   AGREGAR_ANGEL,
+  OBTENER_ANGELES,
+  OBTENER_ANGEL,
 } from "../../types";
 
 const AngelReducer = (state, action) => {
   switch (action.type) {
     case AGREGAR_ANGEL_INFO:
+    case OBTENER_ANGEL:
       return {
         ...state,
         angelinfo: action.payload,
@@ -26,6 +29,11 @@ const AngelReducer = (state, action) => {
       return {
         ...state,
         angelid: action.payload,
+      };
+    case OBTENER_ANGELES:
+      return {
+        ...state,
+        angels: action.payload,
       };
     default:
       return state;

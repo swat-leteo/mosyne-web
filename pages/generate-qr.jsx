@@ -84,15 +84,14 @@ export default function GenerateQR() {
           </li>
         </ol>
         <div className="buttons">
-          <Link href="/profile">
-            <Button
-              bgColor="transparent"
-              textColor="var(--purple1)"
-              borderColor="var(--purple1)"
-            >
-              Ir al inicio
-            </Button>
-          </Link>
+          <Button
+            bgColor="transparent"
+            textColor="var(--purple1)"
+            borderColor="var(--purple1)"
+            onClick={() => (window.location = "/profile")}
+          >
+            Ir al inicio
+          </Button>
         </div>
       </GenerateQRContainer>
     </Layout>

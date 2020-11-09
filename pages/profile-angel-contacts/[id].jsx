@@ -1,15 +1,16 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
-import Header from "../components/layouts/Header";
-import Layout from "../components/layouts/Layout";
-import Logout from "../components/layouts/Logout";
-import Menu from "../components/layouts/Menu";
-import CardAngel from "../components/layouts/CardAngel";
+import Header from "../../components/layouts/Header";
+import Layout from "../../components/layouts/Layout";
+import Logout from "../../components/layouts/Logout";
+import Menu from "../../components/layouts/Menu";
+import CardAngel from "../../components/layouts/CardAngel";
 
-import Button from "../components/ui/Button";
-import Input from "../components/ui/Input";
+import Button from "../../components/ui/Button";
+import Input from "../../components/ui/Input";
 
 const ProfileAngelContactsContainer = styled.section`
   font-family: var(--font);
@@ -72,6 +73,12 @@ const ProfileAngelContactsContainer = styled.section`
 
 export default function ProfileAngelContacts() {
   const [menu, showMenu] = useState(false);
+  const router = useRouter();
+  const {
+    query: { id },
+  } = router;
+
+  console.log(id);
   return (
     <Layout display="grid" menu={menu}>
       <Menu menu={menu} showMenu={showMenu} />
@@ -79,7 +86,7 @@ export default function ProfileAngelContacts() {
         <Header>
           <Logout />
         </Header>
-        <CardAngel tab="2" menu={menu} />
+        <CardAngel tab="2" menu={menu} id={id} />
         <form>
           <div className="contact">
             <label htmlFor="">Soy contacto de emergencia</label>
