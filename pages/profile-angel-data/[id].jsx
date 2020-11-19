@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Link from "next/link";
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 

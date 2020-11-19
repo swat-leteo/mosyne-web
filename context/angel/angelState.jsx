@@ -17,7 +17,12 @@ import Swal from "sweetalert2";
 
 const AngelState = (props) => {
   const initialState = {
-    angelinfo: {},
+    angelinfo: {
+      address: {
+        city: "",
+      },
+      contacts: [{}],
+    },
     contacts: [],
     angelid: "",
     angels: [],
