@@ -24,14 +24,15 @@ const LoginContainer = styled.main`
     background-color: var(--gray);
     display: flex;
     justify-content: center;
+    height: 67px;
   }
   form {
     margin-top: 20px;
-    padding: 0 10px;
+    padding: 30px 10px;
     div {
       display: flex;
       flex-direction: column;
-      margin-top: 10px;
+      margin-top: 20px;
       &:last-of-type {
         flex-direction: row;
       }
@@ -54,7 +55,7 @@ const LoginContainer = styled.main`
       display: flex;
       align-items: center;
       input[type="checkbox"]:checked {
-        color: var(--purple1);
+        background-color: var(--purple1);
       }
       label {
         font-weight: 400;
@@ -73,23 +74,21 @@ const LoginContainer = styled.main`
       font-style: italic;
     }
   }
-  > div:last-of-type {
+  .footer {
     position: absolute;
     bottom: 10px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 10px;
+    margin: 0 0 20px 0;
     button {
+      width: 100%;
       justify-content: center;
       svg {
         margin-right: 10px;
       }
-    }
-    p {
-      margin-top: 20px;
-      color: var(--blue);
-      font-size: 10px;
     }
   }
 `;
@@ -127,7 +126,7 @@ export default function Login() {
         </div>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="email">Correo electrónico*</label>
+            <label htmlFor="email">* Correo electrónico</label>
             <Input
               type="email"
               name="email"
@@ -138,7 +137,7 @@ export default function Login() {
             {error.email && <p>* {error.email}</p>}
           </div>
           <div>
-            <label htmlFor="password">Contraseña*</label>
+            <label htmlFor="password">* Contraseña</label>
             <Input
               type="password"
               name="password"
@@ -148,7 +147,6 @@ export default function Login() {
             />
             {error.password && <p>* {error.password}</p>}
           </div>
-          <legend>* campos obligatorios</legend>
           <p>No recuerdo mi contraseña</p>
           <Button
             bgColor="var(--purple1)"
@@ -163,7 +161,7 @@ export default function Login() {
             <label htmlFor="recuerdame">Recuerdame</label>
           </div>
         </form>
-        <div>
+        <div className="footer">
           <Button
             bgColor="#DB4A39"
             textColor="#FAFAFA"
@@ -173,7 +171,13 @@ export default function Login() {
             <IconGoogle /> Entrar con Google
           </Button>
           <Link href="/register">
-            <p>Todavía no tengo una cuenta</p>
+            <Button
+              bgColor="transparent"
+              textColor="var(--purple1)"
+              borderColor="var(--purple1)"
+            >
+              Registrate
+            </Button>
           </Link>
         </div>
       </LoginContainer>
