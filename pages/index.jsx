@@ -2,7 +2,8 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import Link from 'next/link';
-// import GoogleLogin from 'react-google-login';
+import Modal from 'react-modal';
+import GoogleLogin from 'react-google-login';
 
 //----- import components
 import Layout from '../components/layouts/Layout';
@@ -11,7 +12,7 @@ import Button from '../components/ui/Button';
 import Bullets from '../components/ui/Bullets';
 import ButtonGoogle from '../components/ui/ButtonGoogle';
 import IconQR from '../components/ui/icons/IconQR';
-// import IconGoogle from '../components/ui/icons/IconGoogle';
+import IconGoogle from '../components/ui/icons/IconGoogle';
 import IconMail from '../components/ui/icons/IconMail';
 import IconCard from '../components/ui/icons/IconCard';
 import IconHeart from '../components/ui/icons/IconHeart';
@@ -21,8 +22,8 @@ import IconArrow from '../components/ui/icons/IconArrow';
 import IconFacebook from '../components/ui/icons/IconFacebook';
 import IconTwitter from '../components/ui/icons/IconTwitter';
 import IconInstagram from '../components/ui/icons/IconInstagram';
-// import IconMosine from "../components/ui/icons/IconMosine";
 import IconMosine from '../components/ui/icons/IconMosine';
+// import InfoModal from '../components/layouts/InfoModal';
 import { Media } from '../types/mediaquery';
 
 const HeroContainer = styled.div`
@@ -288,10 +289,15 @@ export const Register = styled.section`
 	}
 `;
 
+Modal.setAppElement('#__next');
+
 export default function Home() {
 	const responseGoogle = (response) => {
 		console.log(response);
 	};
+
+	const windowWith = typeof window !== 'undefined' && window.innerWidth;
+
 	return (
 		<Layout>
 			<Header whiteColor="true">
@@ -315,7 +321,7 @@ export default function Home() {
 						shadow="true"
 						width="100%"
 					/>
-					<Link href="/info">
+					<Link href={windowWith < 1440 ? '/info' : '/register'}>
 						<Button
 							bgColor="transparent"
 							textColor="#FAFAFA"
@@ -650,6 +656,26 @@ export default function Home() {
 					<IconInstagram />
 				</div>
 			</div>
+			{/* <Modal
+				isOpen={modalIsOpen}
+				onRequestClose={closeModal}
+				style={{
+					overlay: {
+						background: 'rgba(0,0,0,0.75)',
+					},
+					content: {
+						top: '50%',
+						left: '50%',
+						transform: 'translate(-50%, -50%)',
+						padding: '0',
+						background: 'transparent',
+						maxWidth: '25%',
+						border: 'none',
+					},
+				}}
+			>
+				<LoginModal />
+			</Modal> */}
 		</Layout>
 	);
 }
