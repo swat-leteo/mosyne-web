@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-const BASE_URL = "https://api-mosine.appspot.com/api";
+const BASE_URL = "https://mosine-api-297015.uc.r.appspot.com/api";
 
 const request = async (path, method, body) => {
   try {
