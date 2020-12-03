@@ -6,26 +6,26 @@ import IconMosineAlt from "../ui/icons/IconMosineAlt";
 
 const HeaderContainer = styled.header`
   width: 100%;
-  padding: 10px;
+  padding: 10px 15px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background: ${(props) =>
     props.whiteColor
       ? "linear-gradient(var(--purple1), var(--purple2))"
       : "var(--white)"};
-  div p {
+  .headerContainer_logo p {
     color: ${(props) => (props.whiteColor ? "var(--white)" : "var(--black)")};
     font-family: "Quicksand", sans-serif;
     font-size: 8px;
-    line-height: 10px;
-    margin-top: 0;
+    line-height: 15px;
+    margin: 0;
   }
   a {
     text-decoration: none;
     color: ${(props) => (props.whiteColor ? "var(--white)" : "var(--violet)")};
     font-family: var(--font);
-    font-size: 10px;
+    font-size: 12px;
     line-height: 12px;
     font-weight: 700;
   }
@@ -34,7 +34,7 @@ const HeaderContainer = styled.header`
 const Header = (props) => {
   return (
     <HeaderContainer whiteColor={props.whiteColor}>
-      <div>
+      <div className="headerContainer_logo">
         {props.whiteColor ? <IconMosine /> : <IconMosineAlt />}
         <p>Codigos QR para pacientes Alzheimer</p>
       </div>

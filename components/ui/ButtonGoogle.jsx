@@ -6,7 +6,7 @@ import IconGoogle from "./icons/IconGoogle";
 import AuthContext from "../../context/auth/authContext";
 
 const Button = styled(GoogleLogin)`
-  width: 90%;
+  width: ${(props) => props.width};
   margin-bottom: 10px;
   display: flex !important;
   justify-content: space-between;
@@ -37,7 +37,7 @@ const Button = styled(GoogleLogin)`
   }
 `;
 
-const ButtonGoogle = ({ bgColor, textColor, borderColor, shadow }) => {
+const ButtonGoogle = ({ bgColor, textColor, borderColor, shadow, width }) => {
   const { registrarGoogle } = useContext(AuthContext);
 
   const responseGoogle = ({ profileObj: { email, name, familyName } }) => {
@@ -53,6 +53,7 @@ const ButtonGoogle = ({ bgColor, textColor, borderColor, shadow }) => {
       bgColor={bgColor}
       textColor={textColor}
       borderColor={borderColor}
+      width={width}
       shadow={shadow}
       clientId="730257169575-9dcdlk66l2u807j0dobgbhjsf4phhti1.apps.googleusercontent.com"
       onSuccess={responseGoogle}

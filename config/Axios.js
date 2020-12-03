@@ -14,7 +14,6 @@ const request = async (path, method, body) => {
   } catch (error) {
     const data = error.response.data || {};
     const status = error.response.status || 500;
-    console.log(data);
     return { data, status };
   }
 };

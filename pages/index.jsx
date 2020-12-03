@@ -21,31 +21,34 @@ import IconArrow from "../components/ui/icons/IconArrow";
 import IconFacebook from "../components/ui/icons/IconFacebook";
 import IconTwitter from "../components/ui/icons/IconTwitter";
 import IconInstagram from "../components/ui/icons/IconInstagram";
+import IconMosine from "../components/ui/icons/IconMosine";
 
 const HeroContainer = styled.div`
-  width: 100vw;
-  height: 450px;
+  width: 100%;
+  height: 506px;
   background-image: url("/static/img/hero.png");
   clip-path: polygon(0 0, 100vw 0, 100vw 100vh, 0 95vh);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   font-family: var(--font);
   h1 {
     width: 60vw;
     font-weight: bold;
     font-size: 24px;
-    line-height: 28px;
+    line-height: 40px;
     text-align: center;
     color: var(--white);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0;
   }
-  div {
-    width: 65vw;
-    padding: 37px 0 0 10px;
+  .HeroContainer_btn {
+    width: 75vw;
+    padding: 37px 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,23 +56,23 @@ const HeroContainer = styled.div`
     background-color: rgba(62, 90, 173, 0.9);
     border-radius: 14px;
     color: var(--white);
+    margin-top: 30px;
     h2 {
       font-weight: bold;
       font-size: 18px;
       line-height: 21px;
-      margin-bottom: 0;
     }
     p {
       width: 90%;
       font-size: 12px;
-      line-height: 14px;
+      line-height: 20px;
       text-align: center;
       span {
         font-weight: bold;
       }
     }
     h3 {
-      font-size: 10px;
+      font-size: 12px;
       line-height: 12px;
       text-align: center;
       color: rgba(242, 242, 242, 0.9);
@@ -79,7 +82,12 @@ const HeroContainer = styled.div`
 
 const ProcedureContainer = styled.div`
   font-family: var(--font);
-  margin-bottom: 50px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10px;
   h1 {
     font-weight: 700;
     font-size: 24px;
@@ -99,6 +107,7 @@ const ProcedureContainer = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
     svg {
       width: 30%;
     }
@@ -110,7 +119,7 @@ const ProcedureContainer = styled.div`
     p {
       width: 25%;
       font-size: 12px;
-      line-height: 14px;
+      line-height: 20px;
       font-weight: 400;
     }
   }
@@ -118,7 +127,7 @@ const ProcedureContainer = styled.div`
 
 const SmallHeroContainer = styled.div`
   width: 100vw;
-  height: 100vw;
+  min-height: 320px;
   background-image: ${(props) => props.bgURL && `url(${props.bgURL})`};
   background-size: cover;
   background-position: center;
@@ -152,11 +161,12 @@ export default function Home() {
   return (
     <Layout>
       <Header whiteColor="true">
-        <Link href="/login">Iniciar sesión</Link>
+        <Link href="/login">INICIAR SESIÓN</Link>
       </Header>
       <HeroContainer>
-        <h1>Ayudalos a regresar a casa</h1>
-        <div>
+        <h1>Ayudalos a</h1>
+        <h1>regresar a casa</h1>
+        <div className="HeroContainer_btn">
           <IconQR />
           <h2>Registrate</h2>
           <p>
@@ -169,12 +179,14 @@ export default function Home() {
             textColor="#FAFAFA"
             borderColor="#DB4A39"
             shadow="true"
+            width="90%"
           />
           <Link href="/info">
             <Button
               bgColor="transparent"
               textColor="#FAFAFA"
               borderColor="#FAFAFA"
+              width="100%"
             >
               <IconMail />
               Registrate con tu correo
@@ -315,8 +327,8 @@ export default function Home() {
       </SmallHeroContainer>
       <div
         css={css`
-          width: 100vw;
-          height: 90vw;
+          width: 100%;
+          height: 320px;
           background-color: var(--purple1);
           padding: 10px 15px;
           display: flex;
@@ -333,7 +345,7 @@ export default function Home() {
           }
           p {
             font-size: 12px;
-            line-height: 14px;
+            line-height: 24px;
             margin-bottom: 20px;
             span {
               font-weight: 700;
@@ -368,10 +380,9 @@ export default function Home() {
       </div>
       <div
         css={css`
-          width: 100vw;
-          height: 80vw;
+          width: 100%;
+          height: 320px;
           padding: 50px 15px;
-          margin: 20px 0 50px;
           background-color: var(--white);
           display: flex;
           flex-direction: column;
@@ -391,7 +402,7 @@ export default function Home() {
           }
           p {
             font-size: 12px;
-            line-height: 14px;
+            line-height: 24px;
             color: var(--violet);
           }
         `}
@@ -405,8 +416,8 @@ export default function Home() {
       </div>
       <div
         css={css`
-          width: 100vw;
-          height: 150vw;
+          width: 100%;
+          height: 400px;
           background-color: var(--blue);
           display: flex;
           flex-direction: column;
@@ -424,8 +435,8 @@ export default function Home() {
             display: flex;
             justify-content: center;
             svg {
-              width: 40px;
-              height: 40px;
+              width: 20px;
+              height: 20px;
               margin: 0 10px;
               fill: var(--white);
             }

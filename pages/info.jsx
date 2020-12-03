@@ -38,7 +38,7 @@ const InfoContainer = styled.main`
     margin-top: 72px;
     font-weight: 400;
     font-size: 18px;
-    line-height: 1.2;
+    line-height: 24px;
     span {
       font-weight: 700;
     }
@@ -51,6 +51,7 @@ const InfoContainer = styled.main`
     justify-content: space-center;
     align-items: baseline;
     button {
+      width: 100%;
       justify-content: center;
       margin-right: 5px;
       &:last-of-type {
@@ -120,9 +121,9 @@ export default function Info() {
           </Link>
           <Link href="/register">
             <Button
-              bgColor="var(--purple1)"
-              textColor="#FAFAFA"
-              borderColor="var(--purple1)"
+              bgColor="var(--white)"
+              textColor="var(--purple1)"
+              borderColor="var(--white)"
               shadow="false"
             >
               Siguiente

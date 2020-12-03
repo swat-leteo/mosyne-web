@@ -5,6 +5,8 @@ const BulletsContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: space-around;
+  width: 100%;
+  margin-top: 40px;
   hr {
     position: absolute;
     z-index: -1;

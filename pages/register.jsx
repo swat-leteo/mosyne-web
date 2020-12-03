@@ -26,36 +26,19 @@ const RegisterContainer = styled.main`
     justify-content: center;
     padding: 20px 0;
     background-color: var(--white);
+    height: 67px;
   }
   form {
     margin-top: 20px;
-    & > div {
+    padding: 0 10px;
+    .input {
       display: flex;
       flex-direction: column;
-    }
-    label {
-      font-weight: 700;
-      font-size: 12px;
-    }
-    .name {
-      flex-direction: row;
-      div {
-        margin-left: 10px;
-        margin-right: 5px;
-        display: block;
-        input {
-          width: 100%;
-        }
-        &:last-of-type {
-          margin-left: 5px;
-          margin-right: 10px;
-        }
+      margin-bottom: 10px;
+      label {
+        font-weight: 700;
+        font-size: 12px;
       }
-    }
-    .correo,
-    .password,
-    .confirmar {
-      margin: 10px;
     }
   }
   .buttons {
@@ -68,6 +51,7 @@ const RegisterContainer = styled.main`
     left: 0;
     right: 0;
     button {
+      width: 100%;
       margin: 0 5px 0 0;
       justify-content: center;
       font-weight: 700;
@@ -150,32 +134,30 @@ export default function Register() {
           <IconMosineAlt />
         </div>
         <form>
-          <div className="name">
-            <div>
-              <label htmlFor="nombre">Nombre*</label>
-              <Input
-                type="text"
-                placeholder="Mínimo 2 caracteres"
-                name="firstname"
-                value={firstname}
-                onChange={onChange}
-              />
-              {error.firstname && <p>* {error.firstname}</p>}
-            </div>
-            <div>
-              <label htmlFor="apellido">Apellido*</label>
-              <Input
-                type="text"
-                placeholder="Mínimo 3 caracteres"
-                name="lastname"
-                value={lastname}
-                onChange={onChange}
-              />
-              {error.lastname && <p>* {error.lastname}</p>}
-            </div>
+          <div className="input">
+            <label htmlFor="nombre">* Nombre</label>
+            <Input
+              type="text"
+              placeholder="Mínimo 2 caracteres"
+              name="firstname"
+              value={firstname}
+              onChange={onChange}
+            />
+            {error.firstname && <p>* {error.firstname}</p>}
           </div>
-          <div className="correo">
-            <label htmlFor="email">Correo electrónico*</label>
+          <div className="input">
+            <label htmlFor="apellido">* Apellidos</label>
+            <Input
+              type="text"
+              placeholder="Mínimo 3 caracteres"
+              name="lastname"
+              value={lastname}
+              onChange={onChange}
+            />
+            {error.lastname && <p>* {error.lastname}</p>}
+          </div>
+          <div className="input">
+            <label htmlFor="email">* Correo electrónico</label>
             <Input
               type="email"
               placeholder="ejemplo@mail.com"
@@ -185,8 +167,8 @@ export default function Register() {
             />
             {error.email && <p>* {error.email}</p>}
           </div>
-          <div className="password">
-            <label htmlFor="password">Contraseña*</label>
+          <div className="input">
+            <label htmlFor="password">* Contraseña</label>
             <Input
               type="password"
               placeholder="Mínimo 8 caracteres"
@@ -196,8 +178,8 @@ export default function Register() {
             />
             {error.password && <p>* {error.password}</p>}
           </div>
-          <div className="confirmar">
-            <label htmlFor="confirmar">Confirma tu contraseña*</label>
+          <div className="input">
+            <label htmlFor="confirmar">* Confirma tu contraseña</label>
             <Input
               type="password"
               placeholder="Escríbe de nuevo tu contraseña"
@@ -207,7 +189,6 @@ export default function Register() {
             />
             {error.confirmar && <p>* {error.confirmar}</p>}
           </div>
-          <legend>* campos obligatorios</legend>
         </form>
         <div className="buttons">
           <Link href="/info">
