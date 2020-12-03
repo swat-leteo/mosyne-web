@@ -72,11 +72,16 @@ const AuthState = (props) => {
 	};
 
 	const registrarGoogle = (usuario) => {
+		const windowWith = typeof window !== 'undefined' && window.innerWidth;
 		dispatch({
 			type: LOGIN_GOOGLE,
 			payload: usuario,
 		});
-		router.push('/info');
+		if (windowWith < 1440) {
+			router.push('/info');
+		} else {
+			router.push('/register');
+		}
 	};
 
 	return (

@@ -14,11 +14,15 @@ const Button = styled.button`
 	color: ${(props) => props.textColor};
 	font-size: 15px;
 	line-height: 14px;
+	outline: none;
 	&:last-of-type {
 		margin-bottom: 0;
 	}
 	&:hover {
 		cursor: pointer;
+	}
+	&:active {
+		transform: scale(0.95);
 	}
 `;
 
