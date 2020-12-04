@@ -9,6 +9,7 @@ import Button from '../components/ui/Button';
 import Input from '../components/ui/Input';
 import IconMosineAlt from '../components/ui/icons/IconMosineAlt';
 import { Media } from '../types/mediaquery';
+import ButtonGoogle from '../components/ui/ButtonGoogle';
 
 //----- import context
 import validarRegister from '../validation/validarRegister';
@@ -20,7 +21,6 @@ const RegisterContainer = styled.main`
 	display: flex;
 	flex-direction: column;
 	font-family: var(--font);
-	position: relative;
 	@media ${Media.tablet} {
 		width: 70vw;
 		margin: 0 auto;
@@ -52,11 +52,7 @@ const RegisterContainer = styled.main`
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin: 0 10px;
-		position: absolute;
-		bottom: 50px;
-		left: 0;
-		right: 0;
+		margin: 30px 0;
 		@media ${Media.desktop} {
 			padding: 0 150px;
 		}
@@ -70,25 +66,10 @@ const RegisterContainer = styled.main`
 			}
 		}
 	}
-	> p {
-		position: absolute;
+	.buttons-google {
+		display: flex;
+		justify-content: center;
 		text-align: center;
-		bottom: 10px;
-		left: 0;
-		right: 0;
-		font-size: 10px;
-		color: var(--blue);
-		font-weight: 700;
-	}
-	div p {
-		margin: 5px 0 0;
-		font-size: 10px;
-		color: var(--red);
-	}
-	legend {
-		margin: 0 10px;
-		font-size: 10px;
-		font-style: italic;
 	}
 `;
 
@@ -244,7 +225,15 @@ export default function Register() {
 							Crear Cuenta
 						</Button>
 					</div>
-					<p>Registrarme con Gmail</p>
+					<div className="buttons-google">
+						<ButtonGoogle
+							bgColor="#DB4A39"
+							textColor="#FAFAFA"
+							borderColor="#DB4A39"
+							shadow="true"
+							width="initial"
+						/>
+					</div>
 				</RegisterContainer>
 			</RegisterDesktopContainer>
 		</Layout>

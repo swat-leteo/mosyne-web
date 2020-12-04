@@ -494,10 +494,11 @@ export default function Home() {
 						display: flex;
 						flex-direction: column;
 						justify-content: center;
-						align-items: flex-end;
+						align-items: center;
 						text-align: right;
 						font-family: var(--font);
 						color: var(--white);
+						text-align: center;
 						@media ${Media.desktop} {
 							width: 50%;
 							height: auto;
@@ -518,8 +519,10 @@ export default function Home() {
 							font-size: 12px;
 							line-height: 24px;
 							margin-bottom: 20px;
+							width: 400px;
 							@media ${Media.desktop} {
 								font-size: 16px;
+								width: 100%;
 							}
 
 							span {
@@ -564,8 +567,8 @@ export default function Home() {
 					background-color: var(--white);
 					display: flex;
 					flex-direction: column;
-					justify-content: flex-start;
-					align-items: flex-start;
+					justify-content: center;
+					align-items: center;
 					font-family: var(--font);
 					@media ${Media.desktop} {
 						flex-direction: row;
