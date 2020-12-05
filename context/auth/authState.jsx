@@ -18,6 +18,8 @@ const AuthState = (props) => {
 
 	const [state, dispatch] = useReducer(AuthReducer, initialState);
 
+	const windowWith = typeof window !== 'undefined' && window.innerWidth;
+
 	const registrarUsuario = async (usuario) => {
 		const { status } = await clienteAxios.post('/auth/signup', usuario);
 		if (status === 201) {
@@ -40,7 +42,11 @@ const AuthState = (props) => {
 	const loginUsuario = async (usuario) => {
 		const { status } = await clienteAxios.post('/auth/login', usuario);
 		if (status === 200) {
-			window.location = '/register-confirm';
+			if (windowWith >= 1440) {
+				window.location = '/profile';
+			} else {
+				window.location = '/register-confirm';
+			}
 			Swal.fire(
 				'¡Inicio de sesión exitoso!',
 				'Haz iniciado sesión correctamente.',
@@ -72,7 +78,6 @@ const AuthState = (props) => {
 	};
 
 	const registrarGoogle = (usuario) => {
-		const windowWith = typeof window !== 'undefined' && window.innerWidth;
 		dispatch({
 			type: LOGIN_GOOGLE,
 			payload: usuario,
