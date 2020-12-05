@@ -488,7 +488,7 @@ export default function Home() {
 				<div
 					css={css`
 						width: 100%;
-						height: 320px;
+						height: 400px;
 						background-color: var(--purple1);
 						padding: 10px 15px;
 						display: flex;
@@ -500,6 +500,9 @@ export default function Home() {
 						color: var(--white);
 						text-align: center;
 						@media ${Media.desktop} {
+							display: flex;
+							flex-direction: column;
+							align-items: flex-end;
 							width: 50%;
 							height: auto;
 							padding-right: 120px;
@@ -519,10 +522,10 @@ export default function Home() {
 							font-size: 12px;
 							line-height: 24px;
 							margin-bottom: 20px;
-							width: 400px;
 							@media ${Media.desktop} {
 								font-size: 16px;
 								width: 100%;
+								text-align: right;
 							}
 
 							span {
@@ -568,12 +571,14 @@ export default function Home() {
 					display: flex;
 					flex-direction: column;
 					justify-content: center;
-					align-items: center;
 					font-family: var(--font);
+					@media ${Media.tablet} {
+						padding: 15% 10%;
+					}
 					@media ${Media.desktop} {
 						flex-direction: row;
 						align-items: center;
-						padding: 15% 10%;
+						justify-content: flex-start;
 					}
 					img {
 						width: 40px;

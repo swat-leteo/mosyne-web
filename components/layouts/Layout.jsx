@@ -6,8 +6,8 @@ import styled from '@emotion/styled';
 const LayoutContainer = styled.main`
 	display: block;
 	display: ${(props) => props.display};
-	grid-template-columns: ${(props) =>
-		props.menu === true ? '30% 70%' : '5% 95%'};
+	background: ${(props) =>
+		props.menu && 'linear-gradient(180deg, #6f44e0 0%, #5635ad 100%)'};
 `;
 
 const Layout = (props) => {
