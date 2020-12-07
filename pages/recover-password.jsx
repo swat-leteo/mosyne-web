@@ -12,6 +12,7 @@ import { Media } from '../types/mediaquery';
 //----- import context
 import validarRecupera from '../validation/validarRecupera';
 import AuthContext from '../context/auth/authContext';
+import Link from 'next/link';
 
 const LoginContainer = styled.main`
 	width: 100vw;
@@ -146,6 +147,16 @@ export default function Login() {
 						>
 							Enviar Correo
 						</Button>
+						<Link href="/">
+							<Button
+								bgColor="transparent"
+								textColor="var(--purple1)"
+								borderColor="var(--purple1)"
+								width="100%"
+							>
+								Regresar al inicio
+							</Button>
+						</Link>
 					</form>
 				</LoginContainer>
 			</DesktopContainer>

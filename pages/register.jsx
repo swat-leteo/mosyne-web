@@ -52,7 +52,7 @@ const RegisterContainer = styled.main`
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin: 30px 0;
+		margin: 30px 10px;
 		@media ${Media.desktop} {
 			padding: 0 150px;
 		}

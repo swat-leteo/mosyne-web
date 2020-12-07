@@ -81,6 +81,7 @@ const LoginContainer = styled.main`
 			text-align: right;
 		}
 		button {
+			margin-top: 20px;
 			width: 100%;
 			justify-content: center;
 		}
@@ -188,7 +189,13 @@ export default function Login() {
 							/>
 							{error.password && <p>* {error.password}</p>}
 						</div>
-						<p>No recuerdo mi contraseña</p>
+						<Link href="/recover-password">
+							<p>No recuerdo mi contraseña</p>
+						</Link>
+						<div>
+							<input type="checkbox" />
+							<label htmlFor="recuerdame">Recuerdame</label>
+						</div>
 						<Button
 							bgColor="var(--purple1)"
 							textColor="#FAFAFA"
@@ -197,10 +204,6 @@ export default function Login() {
 						>
 							Iniciar sesión
 						</Button>
-						<div>
-							<input type="checkbox" />
-							<label htmlFor="recuerdame">Recuerdame</label>
-						</div>
 					</form>
 					<div className="footer">
 						<Button
