@@ -1,24 +1,47 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { css } from '@emotion/core';
 
 import Header from "../components/layouts/Header";
 import Layout from "../components/layouts/Layout";
 import Logout from "../components/layouts/Logout";
 import Menu from "../components/layouts/Menu";
+import { Media } from '../types/mediaquery';
 
 import Button from "../components/ui/Button";
 
 const PrivacityContainer = styled.main`
-  font-family: var(--font);
   height: 100vh;
-  position: relative;
+	font-family: var(--font);
+	background: var(--white);
+	border-radius: 20px 0 0 20px;
+	overflow: hidden;
+	transition: all 0.3s linear;
+	box-shadow: -8px 0px 16px rgba(73, 45, 148, 0.5);
+	@media ${Media.desktop} {
+		width: 90%;
+		border-radius: 30px 0 0 30px;
+	}
+	${(props) =>
+		props.menu === true
+			? css`
+					width: 70%;
+					@media ${Media.tablet} {
+						width: 85%;
+					}
+			  `
+			: css`
+					width: 95%;
+			  `}
   header {
     background-color: var(--gray);
     margin-bottom: 20px;
   }
-  > div {
-    padding: 0 10px;
+  .mainContainer {
+    padding: 0 10px 60px 10px;
+    overflow-x: auto;
+    height: 100%;
     h1 {
       color: var(--blue);
       font-size: 18px;
@@ -29,18 +52,20 @@ const PrivacityContainer = styled.main`
       margin: 0;
       color: var(--black);
       font-size: 12px;
+      line-height: 24px;
     }
-    &:last-of-type {
-      width: 100%;
-      position: absolute;
-      bottom: 10px;
-      display: flex;
-      button {
-        justify-content: center;
-        margin: 0;
-        &:first-of-type {
-          margin-right: 10px;
-        }
+  }
+  .bottomContainer {
+    position: absolute;
+    background-color: var(--white);
+    left: 45px;
+    bottom: 20px;
+    display: flex;
+    button {
+      justify-content: center;
+      margin: 0;
+      &:first-of-type {
+        margin-right: 10px;
       }
     }
   }
@@ -48,15 +73,22 @@ const PrivacityContainer = styled.main`
 
 export default function Privacity() {
   const [menu, showMenu] = useState(false);
+  const windowWith = typeof window !== 'undefined' && window.innerWidth;
+
+  useEffect(() => {
+		if (windowWith >= 1440) {
+			showMenu(true);
+		}
+	});
 
   return (
-    <Layout display="grid" menu={menu}>
+    <Layout display="flex" menu={true}>
       <Menu menu={menu} showMenu={showMenu} />
-      <PrivacityContainer>
+      <PrivacityContainer menu={menu}>
         <Header>
           <Logout />
         </Header>
-        <div>
+        <div className="mainContainer">
           <h1>Aviso de Privacidad</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum
@@ -74,7 +106,7 @@ export default function Privacity() {
             consectetur adipiscing elit.
           </p>
         </div>
-        <div>
+        <div className="bottomContainer">
           <Button
             bgColor="transparent"
             textColor="var(--purple1)"
