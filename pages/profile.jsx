@@ -108,17 +108,19 @@ const ProfileContainer = styled.main`
 			color: var(--blue);
 			font-size: 18px;
 		}
-		> div {
+		> .NumbersContainer {
 			display: flex;
-			justify-content: space-between;
+			justify-content: flex-start;
+			flex-wrap: wrap;
 			margin-top: 20px;
-			div {
+			.NumbersItems {
 				padding: 10px;
 				width: 130px;
 				background-color: white;
 				text-align: center;
 				border: 1px solid var(--gray);
 				border-radius: 10px;
+				margin-top: 10px;
 				&:first-of-type {
 					margin-right: 10px;
 				}
@@ -184,8 +186,8 @@ export default function Profile() {
 					</div>
 				</div>
 				<div className="angels">
-					<h2>Tus angeles</h2>
-					<p>Agrega a tus angeles que cuidarás</p>
+					<h2>Mis ángeles</h2>
+					<p>Agrega a tus ángeles que cuidarás</p>
 					<div>
 						{angels.length === 0 ? (
 							<span></span>
@@ -217,15 +219,15 @@ export default function Profile() {
 				</div>
 				<div className="emergency">
 					<h2>Números de emergencia</h2>
-					<div>
-						<div>
+					<div className="NumbersContainer">
+						<div className="NumbersItems">
 							<IconCruzRoja />
 							<h3>Cruz Roja Mexicana</h3>
 							<p>065</p>
 							<p>5557-5757</p>
 							<p>5395-1111</p>
 						</div>
-						<div>
+						<div className="NumbersItems">
 							<IconPolice />
 							<h3>Policía CDMX</h3>
 							<p>5684-2142</p>

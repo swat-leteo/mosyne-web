@@ -90,7 +90,7 @@ const Menu = ({ menu, showMenu }) => {
 				<Link href="/profile-angel-data">
 					<li>
 						<IconAngel />
-						<p>Mi angel</p>
+						<p>Ángeles</p>
 						<hr />
 					</li>
 				</Link>
