@@ -332,7 +332,16 @@ export default function Home() {
 							Registrate con tu correo
 						</Button>
 					</Link>
-					<h3>Recuperar contraseña</h3>
+					<Link href="/recover-password">
+						<Button
+							bgColor="transparent"
+							textColor="rgba(242, 242, 242, 0.9)"
+							borderColor="transparent"
+							width="100%"
+						>
+							Recupera tu contraseña
+						</Button>
+					</Link>
 				</div>
 			</HeroContainer>
 			<ProcedureContainer>
