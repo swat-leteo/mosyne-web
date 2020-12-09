@@ -13,15 +13,11 @@ import IconMenuRight from '../ui/icons/IconMenuRight';
 import { Media } from '../../types/mediaquery';
 
 const MenuContainer = styled.nav`
-	width: 100%;
 	height: 100vh;
 	font-family: var(--font);
 	padding-top: 44px;
 	position: relative;
 	transition: all 0.3s linear;
-	@media ${Media.desktop} {
-		width: 10%;
-	}
 	${(props) =>
 		props.menu === true
 			? css`
@@ -29,9 +25,12 @@ const MenuContainer = styled.nav`
 					@media ${Media.tablet} {
 						width: 15%;
 					}
+					@media ${Media.desktop} {
+						width: 10%;
+					}
 			  `
 			: css`
-					width: 5%;
+					width: 3%;
 			  `}
 
 	ul {

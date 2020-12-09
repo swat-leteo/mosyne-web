@@ -24,6 +24,9 @@ const Button = styled.button`
 	&:active {
 		transform: scale(0.95);
 	}
+	&:focus {
+		border: 2px solid black;
+	}
 `;
 
 export default Button;
