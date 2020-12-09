@@ -503,11 +503,11 @@ export default function Home() {
 						display: flex;
 						flex-direction: column;
 						justify-content: center;
-						align-items: center;
+						align-items: flex-end;
 						text-align: right;
 						font-family: var(--font);
 						color: var(--white);
-						text-align: center;
+						text-align: right;
 						@media ${Media.desktop} {
 							display: flex;
 							flex-direction: column;

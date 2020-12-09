@@ -30,8 +30,7 @@ const ProfileContainer = styled.main`
 	transition: all 0.3s linear;
 	box-shadow: -8px 0px 16px rgba(73, 45, 148, 0.5);
 	@media ${Media.desktop} {
-		width: 90%;
-		border-radius: 30px 0 0 30px;
+		border-radius: 25px 0 0 25px;
 	}
 	${(props) =>
 		props.menu === true
@@ -40,17 +39,25 @@ const ProfileContainer = styled.main`
 					@media ${Media.tablet} {
 						width: 85%;
 					}
+					@media ${Media.desktop} {
+						width: 90%;
+					}
 			  `
 			: css`
-					width: 95%;
+					width: 97%;
 			  `}
-
 	.profile {
 		background-color: white;
 		width: 100%;
 		display: flex;
 		align-items: center;
 		padding: 20px 10px;
+		@media ${Media.tablet} {
+			padding: 20px 30px;
+		}
+		@media ${Media.desktop} {
+			padding: 30px 250px;
+		}
 		div {
 			margin-left: 10px;
 			h1 {
@@ -58,11 +65,23 @@ const ProfileContainer = styled.main`
 				font-size: 18px;
 				color: var(--violet);
 				margin: 0 0 5px;
+				@media ${Media.tablet} {
+					font-size: 20px;
+				}
 			}
 			p {
 				margin: 0;
 				font-size: 8px;
 				color: var(--black);
+				cursor: pointer;
+				transition: 0.2s;
+				&:hover {
+					color: var(--blue);
+					font-weight: bold;
+				}
+				@media ${Media.tablet} {
+					font-size: 12px;
+				}
 			}
 		}
 	}
@@ -70,16 +89,28 @@ const ProfileContainer = styled.main`
 		display: flex;
 		flex-direction: column;
 		padding: 10px;
+		@media ${Media.tablet} {
+			padding: 30px;
+		}
+		@media ${Media.desktop} {
+			padding: 30px 250px;
+		}
 		h2 {
 			color: var(--blue);
 			margin: 0 0 5px;
 			font-weight: 700;
 			font-size: 12px;
+			@media ${Media.tablet} {
+				font-size: 18px;
+			}
 		}
 		p {
 			margin: 0 0 10px;
 			font-size: 10px;
 			color: var(--black);
+			@media ${Media.tablet} {
+				font-size: 12px;
+			}
 		}
 		div {
 			display: flex;
@@ -88,16 +119,30 @@ const ProfileContainer = styled.main`
 				width: 40px;
 				height: 40px;
 				border: 1px dashed black;
-				border-radius: 20px;
+				border-radius: 50%;
 				margin-right: 15px;
+				@media ${Media.tablet} {
+					width: 50px;
+					height: 50px;
+					margin-top: 10px;
+				}
 			}
 			div {
 				margin-right: 15px;
 			}
 		}
+		svg {
+			cursor: pointer;
+		}
 	}
 	.emergency {
 		padding: 10px;
+		@media ${Media.tablet} {
+			padding: 30px;
+		}
+		@media ${Media.desktop} {
+			padding: 30px 250px;
+		}
 		h2,
 		h3,
 		p {
@@ -110,20 +155,17 @@ const ProfileContainer = styled.main`
 		}
 		> .NumbersContainer {
 			display: flex;
-			justify-content: flex-start;
+			justify-content: space-between;
 			flex-wrap: wrap;
 			margin-top: 20px;
 			.NumbersItems {
 				padding: 10px;
-				width: 130px;
+				width: 48%;
 				background-color: white;
 				text-align: center;
 				border: 1px solid var(--gray);
 				border-radius: 10px;
 				margin-top: 10px;
-				&:first-of-type {
-					margin-right: 10px;
-				}
 				h3 {
 					font-size: 10px;
 					color: var(--violet);

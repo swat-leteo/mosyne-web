@@ -18,7 +18,10 @@ const HeaderContainer = styled.header`
 			? 'linear-gradient(var(--purple1), var(--purple2))'
 			: 'var(--white)'};
 	@media ${Media.tablet} {
-		padding: 10px 10%;
+		padding: ${(props) => !props.whiteColor && '30px'};
+	}
+	@media ${Media.desktop} {
+		padding-left: ${(props) => !props.whiteColor && '250px'};
 	}
 
 	.headerContainer_logo p {
@@ -27,6 +30,9 @@ const HeaderContainer = styled.header`
 		font-size: 8px;
 		line-height: 15px;
 		margin: 0;
+		@media ${Media.desktop} {
+			font-size: 12px;
+		}
 	}
 	a {
 		text-decoration: none;
