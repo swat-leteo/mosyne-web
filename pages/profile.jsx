@@ -166,10 +166,17 @@ const ProfileContainer = styled.main`
 				border: 1px solid var(--gray);
 				border-radius: 10px;
 				margin-top: 10px;
+				@media ${Media.tablet} {
+					padding: 20px;
+				}
 				h3 {
 					font-size: 10px;
 					color: var(--violet);
 					margin-bottom: 16px;
+					@media ${Media.tablet} {
+						font-size: 15px;
+						margin-top: 10px;
+					}
 				}
 				p {
 					font-size: 12px;
@@ -216,7 +223,11 @@ export default function Profile() {
 					{photo === '' ? (
 						<IconUserDefault fill="#000000" width="39px" height="39px" />
 					) : (
-						<Image src={photo} width="39px" height="39px" />
+						<Image
+							src={photo}
+							width={windowWith >= 720 ? '50px' : '39px'}
+							height={windowWith >= 720 ? '50px' : '39px'}
+						/>
 					)}
 					<div>
 						<h1>
@@ -241,11 +252,15 @@ export default function Profile() {
 											{angel.photo === '' ? (
 												<IconUserDefault
 													fill="#000000"
-													width="25px"
-													height="25px"
+													width={windowWith >= 720 ? '40px' : '39px'}
+													height={windowWith >= 720 ? '40px' : '39px'}
 												/>
 											) : (
-												<Image src={angel.photo} width="25px" height="25px" />
+												<Image
+													src={angel.photo}
+													width={windowWith >= 720 ? '40px' : '39px'}
+													height={windowWith >= 720 ? '40px' : '39px'}
+												/>
 											)}
 										</div>
 									</Link>
