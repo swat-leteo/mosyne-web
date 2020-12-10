@@ -87,6 +87,17 @@ const EditProfileContainer = styled.main`
 			font-weight: 700;
 			font-size: 18px;
 			color: var(--blue);
+			@media ${Media.tablet} {
+				font-size: 20px;
+			}
+			@media ${Media.desktop} {
+				font-size: 25px;
+			}
+		}
+		input {
+			@media ${Media.tablet} {
+				font-size: 14px;
+			}
 		}
 		form {
 			& > div {
@@ -96,6 +107,9 @@ const EditProfileContainer = styled.main`
 				label {
 					font-size: 12px;
 					font-weight: 700;
+					@media ${Media.tablet} {
+						font-size: 14px;
+					}
 				}
 			}
 			.row {
@@ -118,6 +132,7 @@ const EditProfileContainer = styled.main`
 						width: 100%;
 						@media ${Media.tablet} {
 							margin: 0;
+							font-size: 14px;
 						}
 					}
 				}

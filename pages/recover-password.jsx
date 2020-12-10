@@ -43,17 +43,20 @@ const LoginContainer = styled.main`
 		@media ${Media.desktop} {
 			padding: 0 150px;
 		}
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    input {
-      background-color: var(--gray);
-      margin: 20px 0;
-    }
-    button {
-      width: 100%;
-      justify-content: center;
-    }
+		display: flex;
+		flex-direction: column;
+		margin-top: 20px;
+		input {
+			background-color: var(--gray);
+			margin: 20px 0;
+			@media ${Media.tablet} {
+				font-size: 14px;
+			}
+		}
+		button {
+			width: 100%;
+			justify-content: center;
+		}
 	}
 	.footer {
 		position: absolute;
@@ -101,7 +104,7 @@ export default function Login() {
 	const { recuperarContrasena } = useContext(AuthContext);
 
 	const [user, setUser] = useState({
-		email: ''
+		email: '',
 	});
 	const [error, setError] = useState({});
 
@@ -130,15 +133,15 @@ export default function Login() {
 						<IconMosineAlt />
 					</div>
 					<form onSubmit={handleSubmit}>
-            <label htmlFor="email">* Correo electrónico</label>
-            <Input
-              type="email"
-              name="email"
-              placeholder="Escribe tu correo electrónico"
-              value={user.email}
-              onChange={onChange}
-            />
-            {error.email && <p>* {error.email}</p>}
+						<label htmlFor="email">* Correo electrónico</label>
+						<Input
+							type="email"
+							name="email"
+							placeholder="Escribe tu correo electrónico"
+							value={user.email}
+							onChange={onChange}
+						/>
+						{error.email && <p>* {error.email}</p>}
 						<Button
 							bgColor="var(--purple1)"
 							textColor="#FAFAFA"

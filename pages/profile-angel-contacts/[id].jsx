@@ -43,7 +43,6 @@ const ProfileAngelContactsContainer = styled.section`
 			: css`
 					width: 97%;
 			  `}
-
 	header {
 		background-color: var(--gray);
 	}
@@ -65,9 +64,15 @@ const ProfileAngelContactsContainer = styled.section`
 				font-weight: 700;
 				color: var(--violet);
 				font-size: 12px;
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}
 			}
 			input {
 				background-color: var(--white);
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}
 			}
 		}
 		.row {
@@ -90,6 +95,7 @@ const ProfileAngelContactsContainer = styled.section`
 					width: 100%;
 					@media ${Media.tablet} {
 						margin: 0;
+						font-size: 14px;
 					}
 				}
 			}
@@ -125,7 +131,6 @@ export default function ProfileAngelContacts() {
 		if (windowWith >= 1440) {
 			showMenu(true);
 		}
-		console.log(angelinfo);
 	}, [id]);
 
 	return (

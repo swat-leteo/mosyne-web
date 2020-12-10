@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import clienteAxios from '../../config/Axios';
+import { useRouter } from 'next/router';
 
 import AngelContext from './angelContext';
 import AngelReducer from './angelReducer';
@@ -16,6 +17,8 @@ import {
 import Swal from 'sweetalert2';
 
 const AngelState = (props) => {
+	const router = useRouter();
+
 	const initialState = {
 		angelinfo: {
 			address: {
@@ -68,6 +71,7 @@ const AngelState = (props) => {
 				'Tu angel fue creado exitosamente.',
 				'success'
 			);
+			router.push('/generate-qr');
 		} else {
 			Swal.fire({
 				icon: 'error',
@@ -95,7 +99,6 @@ const AngelState = (props) => {
 				payload: data,
 			});
 		}
-		console.log(data);
 	};
 
 	return (

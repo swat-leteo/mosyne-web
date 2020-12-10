@@ -12,7 +12,7 @@ import { Media } from '../types/mediaquery';
 import Button from '../components/ui/Button';
 
 const PrivacityContainer = styled.main`
-	height: 100vh;
+	min-height: 100vh;
 	font-family: var(--font);
 	background: var(--white);
 	border-radius: 20px 0 0 20px;
@@ -54,12 +54,21 @@ const PrivacityContainer = styled.main`
 			font-size: 18px;
 			text-align: center;
 			margin: 0 0 10px;
+			@media ${Media.tablet} {
+				font-size: 20px;
+			}
+			@media ${Media.desktop} {
+				font-size: 25px;
+			}
 		}
 		p {
 			margin: 0;
 			color: var(--black);
 			font-size: 12px;
 			line-height: 24px;
+			@media ${Media.tablet} {
+				font-size: 14px;
+			}
 		}
 	}
 	.bottomContainer {

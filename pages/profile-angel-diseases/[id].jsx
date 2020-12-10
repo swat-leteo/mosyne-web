@@ -64,9 +64,15 @@ const ProfileAngelDiseasesContainer = styled.section`
 				font-weight: 700;
 				color: var(--violet);
 				font-size: 12px;
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}
 			}
 			input {
 				background-color: var(--white);
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}
 			}
 			textarea,
 			select {
@@ -74,6 +80,9 @@ const ProfileAngelDiseasesContainer = styled.section`
 				color: var(--black);
 				border-color: var(--gray);
 				border-radius: 3px;
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}
 			}
 			textarea {
 				font-family: var(--font);

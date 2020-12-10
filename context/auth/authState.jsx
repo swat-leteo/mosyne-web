@@ -81,17 +81,17 @@ const AuthState = (props) => {
 		const { status } = await clienteAxios.post('/auth/reset_password', mail);
 		if (status === 200) {
 			Swal.fire(
-        "Recuperar contraseña",
-        "Se envío el correo exitosamente.",
-        "success"
-      );
+				'Recuperar contraseña',
+				'Se envío el correo exitosamente.',
+				'success'
+			);
 			router.push('/');
-		} else if(status === 404 ) {
+		} else if (status === 404) {
 			Swal.fire({
-        icon: "warning",
-        title: "",
-        text: "El correo electrónico no existe.",
-      });
+				icon: 'warning',
+				title: '',
+				text: 'El correo electrónico no existe.',
+			});
 		}
 	};
 
@@ -115,7 +115,7 @@ const AuthState = (props) => {
 				loginUsuario,
 				logoutUsuario,
 				registrarGoogle,
-				recuperarContrasena
+				recuperarContrasena,
 			}}
 		>
 			{props.children}

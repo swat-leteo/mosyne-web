@@ -62,11 +62,20 @@ const AddAngelDiseasesContainer = styled.main`
 		font-size: 18px;
 		color: var(--blue);
 		margin: 0;
+		@media ${Media.tablet} {
+			font-size: 20px;
+		}
+		@media ${Media.desktop} {
+			font-size: 25px;
+		}
 	}
 	form {
 		legend {
 			font-size: 10px;
 			font-style: italic;
+			@media ${Media.tablet} {
+				font-size: 12px;
+			}
 		}
 		> div {
 			margin-top: 5px;
@@ -76,6 +85,9 @@ const AddAngelDiseasesContainer = styled.main`
 				font-weight: 700;
 				color: var(--violet);
 				font-size: 12px;
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}	
 			}
 			textarea,
 			select {
@@ -83,6 +95,9 @@ const AddAngelDiseasesContainer = styled.main`
 				color: var(--black);
 				background-color: var(--gray);
 				border-color: var(--gray);
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}	
 			}
 			textarea {
 				font-family: var(--font);
@@ -228,7 +243,6 @@ export default function AddAngelDiseases() {
 		if (Object.keys(errores).length === 0) {
 			agregarAngelDisease(diseases);
 			agregarAngel();
-			router.push('/generate-qr');
 		}
 	};
 	const windowWith = typeof window !== 'undefined' && window.innerWidth;

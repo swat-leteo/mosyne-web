@@ -10,11 +10,13 @@ import Image from '../ui/Image';
 import ButtonQR from '../ui/ButtonQR';
 import IconCloud from '../ui/icons/IconCloud';
 import { Media } from '../../types/mediaquery';
+import IconUserDefault from '../ui/icons/IconUserDefault';
 
 //----- import context
 import AngelContext from '../../context/angel/angelContext';
 
 const CardAngelContainer = styled.div`
+	padding: 10px;
 	@media ${Media.tablet} {
 		padding: 20px 30px;
 	}
@@ -30,13 +32,21 @@ const CardAngelContainer = styled.div`
 	.user {
 		display: flex;
 		align-items: center;
-	}
-	h1 {
-		font-weight: 700;
-		font-size: 18px;
-		color: var(--black);
-		margin: 0;
-		margin-right: 50px;
+		margin-bottom: 10px;
+		h1 {
+			font-weight: 700;
+			font-size: 18px;
+			color: var(--black);
+			margin: 0;
+			margin-left: 12px;
+			margin-right: 50px;
+			@media ${Media.desktop} {
+				font-size: 20px;
+			}
+			@media ${Media.desktop} {
+				font-size: 25px;
+			}
+		}
 	}
 	p {
 		margin: 0;
@@ -53,12 +63,12 @@ const CardAngelContainer = styled.div`
 			cursor: pointer;
 			margin-right: 20px;
 			&:nth-of-type(${(props) => props.tab}) {
-				margin-right: 10px;
+				margin-right: 20px;
 				padding-bottom: 5px;
 				border-bottom: 3px solid var(--blue);
 			}
 			@media ${Media.tablet} {
-				font-size: 12px;
+				font-size: 14px;
 			}
 		}
 	}
@@ -74,17 +84,26 @@ const CardAngel = ({ tab, menu, angel }) => {
 	useEffect(() => {
 		obtenerAngel(id);
 	}, []);
+	const windowWith = typeof window !== 'undefined' && window.innerWidth;
 
 	return (
 		<CardAngelContainer tab={tab} menu={menu}>
 			<div className="info">
 				<div className="user">
-					<Image
-						src={angelinfo.photo}
-						alt={angelinfo.firstname}
-						width="50px"
-						height="50px"
-					/>
+					{angelinfo.photo === '' ? (
+						<IconUserDefault
+							fill="#000000"
+							width={windowWith >= 720 ? '50px' : '39px'}
+							height={windowWith >= 720 ? '50px' : '39px'}
+						/>
+					) : (
+						<Image
+							src={angelinfo.photo}
+							alt={angelinfo.firstname}
+							width="50px"
+							height="50px"
+						/>
+					)}
 					<h1>
 						{angelinfo.firstname} {angelinfo.lastname}
 					</h1>

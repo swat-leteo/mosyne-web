@@ -58,6 +58,12 @@ const GenerateQRContainer = styled.main`
 		font-size: 12px;
 		color: var(--blue);
 		border-bottom: 1px solid var(--blue);
+		@media ${Media.tablet} {
+			font-size: 20px;
+		}
+		@media ${Media.desktop} {
+			font-size: 25px;
+		}
 	}
 	> a {
 		width: 100%;
@@ -71,6 +77,10 @@ const GenerateQRContainer = styled.main`
 		li {
 			color: var(--black);
 			font-size: 12px;
+			@media ${Media.tablet} {
+				font-size: 16px;
+				margin-bottom: 15px;
+			}
 			::marker {
 				font-weight: 700;
 			}
@@ -137,7 +147,7 @@ export default function GenerateQR() {
 						</Button>
 						<a
 							target="__blank"
-							href={`https://api-mosine.appspot.com/api/angels/${angelid}/qr`}
+							href={`https://mosine-api-297015.uc.r.appspot.com/api/angels/${angelid}/qr`}
 						>
 							<Button
 								bgColor="var(--purple1)"
