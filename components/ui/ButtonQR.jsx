@@ -10,7 +10,7 @@ import { Media } from '../../types/mediaquery';
 const ButtonQR = ({ id }) => {
 	return (
 		<a
-			href={`https://api-mosine.appspot.com/api/angels/${id}/qr`}
+			href={`https://mosine-api-297015.uc.r.appspot.com/api/angels/${id}/qr`}
 			target="__blank"
 			css={css`
 				text-decoration: none;

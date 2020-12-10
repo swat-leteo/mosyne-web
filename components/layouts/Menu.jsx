@@ -50,13 +50,21 @@ const MenuContainer = styled.nav`
 				  `}
 
 		li {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
+			padding-top: 10px;
+			margin: 0 20px;
+			border-radius: 100px;
+			text-align: center;
 			cursor: pointer;
+			transition: 0.3s;
+			&:hover {
+				background-color: var(--purple2);
+			}
 			p {
 				color: var(--white);
 				font-size: 10px;
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}
 			}
 			hr {
 				width: 50%;
@@ -86,17 +94,19 @@ const Menu = ({ menu, showMenu }) => {
 						<hr />
 					</li>
 				</Link>
-				<Link href="/profile-angel-data">
+				<Link href="/">
 					<li>
 						<IconAngel />
 						<p>Ángeles</p>
 						<hr />
 					</li>
 				</Link>
-				<li>
-					<IconConfig />
-					<p>Configuración</p>
-				</li>
+				<Link href="/edit-profile">
+					<li>
+						<IconConfig />
+						<p>Editar perfil</p>
+					</li>
+				</Link>
 			</ul>
 			{menu === true ? (
 				<IconMenuLeft onClick={() => showMenu(false)} />

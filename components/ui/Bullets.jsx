@@ -1,6 +1,7 @@
 //----- import Libraries
 import React from 'react';
 import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
 
 //----- import components
 import { Media } from '../../types/mediaquery';
@@ -9,11 +10,10 @@ const BulletsContainer = styled.div`
 	position: relative;
 	display: flex;
 	justify-content: space-around;
-	width: 100%;
 	margin-top: 20px;
 	@media ${Media.desktop} {
 		margin-top: 0;
-		padding: 0 250px;
+		margin: ${(props) => props.isAdd && '0 250px'};
 	}
 	hr {
 		position: absolute;
@@ -27,8 +27,7 @@ const BulletsContainer = styled.div`
 			border: 2px solid var(--blue);
 		}
 		@media ${Media.desktop} {
-			top: 35px;
-			margin: 0 250px;
+			top: 25px;
 		}
 	}
 
@@ -56,8 +55,10 @@ const BulletsContainer = styled.div`
 `;
 
 const Bullets = ({ bullet }) => {
+	const router = useRouter();
+	const isAdd = router.route.includes('add');
 	return (
-		<BulletsContainer bullet={bullet}>
+		<BulletsContainer isAdd={isAdd} bullet={bullet}>
 			<hr />
 			<h3>1</h3>
 			<h3>2</h3>

@@ -17,7 +17,7 @@ import AuthContext from '../context/auth/authContext';
 
 const LoginContainer = styled.main`
 	width: 100vw;
-	height: 100vh;
+	min-height: 100vh;
 	font-family: var(--font);
 	position: relative;
 	@media ${Media.tablet} {
@@ -44,7 +44,6 @@ const LoginContainer = styled.main`
 		@media ${Media.desktop} {
 			padding: 0 150px;
 		}
-
 		div {
 			display: flex;
 			flex-direction: column;
@@ -54,11 +53,9 @@ const LoginContainer = styled.main`
 			}
 			input {
 				background-color: var(--gray);
-			}
-			p {
-				margin: 5px 0 0;
-				font-size: 10px;
-				color: var(--red);
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}
 			}
 		}
 		div label,
@@ -66,6 +63,9 @@ const LoginContainer = styled.main`
 			color: var(--black);
 			font-size: 12px;
 			font-weight: 700;
+			@media ${Media.tablet} {
+				font-size: 14px;
+			}
 		}
 		div:last-of-type {
 			display: flex;
@@ -79,16 +79,19 @@ const LoginContainer = styled.main`
 		}
 		> p {
 			text-align: right;
+			cursor: pointer;
+			&:hover {
+				color: var(--purple1);
+			}
 		}
 		button {
 			margin-top: 20px;
 			width: 100%;
 			justify-content: center;
 		}
-		legend {
-			margin-top: 10px;
-			font-size: 10px;
-			font-style: italic;
+		.recuerdame {
+			margin-left: 10px;
+			cursor: pointer;
 		}
 	}
 	.footer {
@@ -193,8 +196,10 @@ export default function Login() {
 							<p>No recuerdo mi contraseña</p>
 						</Link>
 						<div>
-							<input type="checkbox" />
-							<label htmlFor="recuerdame">Recuerdame</label>
+							<input id="recuerdame" type="checkbox" />
+							<label className="recuerdame" htmlFor="recuerdame">
+								Recuerdame
+							</label>
 						</div>
 						<Button
 							bgColor="var(--purple1)"

@@ -63,14 +63,25 @@ const ProfileAngelDataContainer = styled.section`
 				font-weight: 700;
 				color: var(--violet);
 				font-size: 12px;
+					@media ${Media.tablet} {
+						font-size: 14px;
+					}
 			}
 			input {
 				background-color: var(--white);
+					@media ${Media.tablet} {
+						font-size: 14px;
+					}
 			}
 			textarea {
 				margin-top: 5px;
 				background-color: var(--white);
 				border-color: var(--gray);
+				font-family: var(--font);
+				padding: 10px;
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}
 			}
 		}
 			.row {
@@ -93,6 +104,7 @@ const ProfileAngelDataContainer = styled.section`
 						width: 100%;
 						@media ${Media.tablet} {
 							margin: 0;
+							font-size: 14px;
 						}
 					}
 				}
@@ -135,7 +147,7 @@ export default function ProfileAngelData() {
 	return (
 		<Layout display="flex" menu={true}>
 			<Menu menu={menu} showMenu={showMenu} />
-			<ProfileAngelDataContainer menu={menu}>
+			<ProfileAngelDataContainer>
 				<Header>
 					<Logout />
 				</Header>
@@ -178,6 +190,7 @@ export default function ProfileAngelData() {
 							value={angelinfo.about}
 						></textarea>
 					</div>
+					<hr />
 					<div className="row">
 						<div>
 							<label htmlFor="">Estado</label>

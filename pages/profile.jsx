@@ -22,7 +22,7 @@ import UserContext from '../context/user/userContext';
 import AngelContext from '../context/angel/angelContext';
 
 const ProfileContainer = styled.main`
-	height: 100vh;
+	min-height: 100vh;
 	font-family: var(--font);
 	background: var(--white);
 	border-radius: 20px 0 0 20px;
@@ -101,7 +101,10 @@ const ProfileContainer = styled.main`
 			font-weight: 700;
 			font-size: 12px;
 			@media ${Media.tablet} {
-				font-size: 18px;
+				font-size: 20px;
+			}
+			@media ${Media.desktop} {
+				font-size: 25px;
 			}
 		}
 		p {
@@ -109,30 +112,60 @@ const ProfileContainer = styled.main`
 			font-size: 10px;
 			color: var(--black);
 			@media ${Media.tablet} {
-				font-size: 12px;
+				font-size: 14px;
+				margin-bottom: 20px;
 			}
 		}
-		div {
+		.angels-list {
+			overflow-x: auto;
 			display: flex;
 			align-items: center;
+			&::-webkit-scrollbar {
+				height: 6px;
+			}
+			&::-webkit-scrollbar-thumb {
+				background: #f1f1f1;
+				border-radius: 4px;
+				cursor: pointer;
+			}
+
 			span {
 				width: 40px;
 				height: 40px;
 				border: 1px dashed black;
 				border-radius: 50%;
-				margin-right: 15px;
 				@media ${Media.tablet} {
 					width: 50px;
 					height: 50px;
 					margin-top: 10px;
 				}
 			}
-			div {
+			.angel-avatar {
+				width: auto;
+				text-align: center;
 				margin-right: 15px;
+				cursor: pointer;
+				padding: 0 15px;
+				padding-top: 15px;
+				transition: 0.3s;
+				&:hover {
+					background: var(--gray);
+					border-radius: 10px;
+				}
+				@media ${Media.tablet} {
+					margin-right: 30px;
+				}
+				img {
+					margin: 0;
+				}
+				p {
+					margin-top: 5px;
+					font-weight: bold;
+				}
 			}
-		}
-		svg {
-			cursor: pointer;
+			svg {
+				cursor: pointer;
+			}
 		}
 	}
 	.emergency {
@@ -141,7 +174,7 @@ const ProfileContainer = styled.main`
 			padding: 30px;
 		}
 		@media ${Media.desktop} {
-			padding: 30px 250px;
+			padding: 0 250px;
 		}
 		h2,
 		h3,
@@ -152,6 +185,12 @@ const ProfileContainer = styled.main`
 			font-weight: 700;
 			color: var(--blue);
 			font-size: 18px;
+			@media ${Media.tablet} {
+				font-size: 20px;
+			}
+			@media ${Media.desktop} {
+				font-size: 25px;
+			}
 		}
 		> .NumbersContainer {
 			display: flex;
@@ -182,6 +221,9 @@ const ProfileContainer = styled.main`
 					font-size: 12px;
 					color: var(--black);
 					margin-bottom: 10px;
+					@media ${Media.desktop} {
+						font-size: 14px;
+					}
 					&:last-of-type {
 						margin-bottom: 5px;
 					}
@@ -221,7 +263,11 @@ export default function Profile() {
 				</Header>
 				<div className="profile">
 					{photo === '' ? (
-						<IconUserDefault fill="#000000" width="39px" height="39px" />
+						<IconUserDefault
+							fill="#000000"
+							width={windowWith >= 720 ? '50px' : '39px'}
+							height={windowWith >= 720 ? '50px' : '39px'}
+						/>
 					) : (
 						<Image
 							src={photo}
@@ -241,37 +287,47 @@ export default function Profile() {
 				<div className="angels">
 					<h2>Mis ángeles</h2>
 					<p>Agrega a tus ángeles que cuidarás</p>
-					<div>
+					<div className="angels-list">
 						{angels.length === 0 ? (
 							<span></span>
 						) : (
 							<>
 								{angels.map((angel) => (
 									<Link href={`/profile-angel-data/${angel.id}`} key={angel.id}>
-										<div>
+										<div className="angel-avatar">
 											{angel.photo === '' ? (
-												<IconUserDefault
-													fill="#000000"
-													width={windowWith >= 720 ? '40px' : '39px'}
-													height={windowWith >= 720 ? '40px' : '39px'}
-												/>
+												<>
+													<IconUserDefault
+														fill="#000000"
+														width={windowWith >= 720 ? '40px' : '39px'}
+														height={windowWith >= 720 ? '40px' : '39px'}
+													/>
+													<p>
+														{angel.firstname} <br /> {angel.lastname}
+													</p>
+												</>
 											) : (
-												<Image
-													src={angel.photo}
-													width={windowWith >= 720 ? '40px' : '39px'}
-													height={windowWith >= 720 ? '40px' : '39px'}
-												/>
+												<>
+													<Image
+														src={angel.photo}
+														width={windowWith >= 720 ? '40px' : '39px'}
+														height={windowWith >= 720 ? '40px' : '39px'}
+													/>
+													<p>
+														{angel.firstname} <br /> {angel.lastname}
+													</p>
+												</>
 											)}
 										</div>
 									</Link>
 								))}
 							</>
 						)}
-						<IconPlus
-							width="20px"
-							height="20px"
-							onClick={() => router.push('/privacity')}
-						/>
+						<Link href="/privacity">
+							<div>
+								<IconPlus width="20px" height="20px" />
+							</div>
+						</Link>
 					</div>
 				</div>
 				<div className="emergency">

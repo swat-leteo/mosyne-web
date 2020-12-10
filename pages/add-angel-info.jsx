@@ -56,9 +56,11 @@ const AddAngelInfoContainer = styled.main`
 		margin: 0;
 		@media ${Media.tablet} {
 			padding: 20px 30px;
+			font-size: 20px;
 		}
 		@media ${Media.desktop} {
 			padding: 30px 250px;
+			font-size: 25px;
 		}
 	}
 	form {
@@ -71,6 +73,14 @@ const AddAngelInfoContainer = styled.main`
 		legend {
 			font-size: 10px;
 			font-style: italic;
+			@media ${Media.tablet} {
+				font-size: 12px;
+			}
+		}
+		input {
+			@media ${Media.tablet} {
+				font-size: 14px;
+			}
 		}
 		> div {
 			margin-top: 5px;
@@ -80,6 +90,9 @@ const AddAngelInfoContainer = styled.main`
 				font-weight: 700;
 				color: var(--violet);
 				font-size: 12px;
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}
 			}
 			textarea,
 			select {
@@ -88,6 +101,9 @@ const AddAngelInfoContainer = styled.main`
 				background-color: var(--gray);
 				border-color: var(--gray);
 				border-radius: 2px;
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}
 			}
 			textarea {
 				font-family: var(--font);
@@ -154,6 +170,7 @@ const AddAngelInfoContainer = styled.main`
 					width: 100%;
 					@media ${Media.tablet} {
 						margin: 0;
+						font-size: 14px;
 					}
 				}
 			}

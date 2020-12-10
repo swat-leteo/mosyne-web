@@ -61,6 +61,12 @@ const AddAngelContactContainer = styled.main`
 		font-size: 18px;
 		color: var(--blue);
 		margin: 0;
+		@media ${Media.tablet} {
+			font-size: 20px;
+		}
+		@media ${Media.desktop} {
+			font-size: 25px;
+		}
 	}
 	form {
 		> div {
@@ -71,6 +77,14 @@ const AddAngelContactContainer = styled.main`
 				font-weight: 700;
 				color: var(--violet);
 				font-size: 12px;
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}
+			}
+			input {
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}
 			}
 			select {
 				margin-top: 5px;
@@ -79,6 +93,9 @@ const AddAngelContactContainer = styled.main`
 				background-color: var(--gray);
 				border-color: var(--gray);
 				border-radius: 2px;
+				@media ${Media.tablet} {
+					font-size: 14px;
+				}
 			}
 			p {
 				margin: 5px 0 0;
@@ -90,6 +107,9 @@ const AddAngelContactContainer = styled.main`
 			margin-top: 10px;
 			font-size: 10px;
 			font-style: italic;
+			@media ${Media.tablet} {
+				font-size: 12px;
+			}
 		}
 		.buttons {
 			flex-direction: row;
@@ -135,6 +155,7 @@ const AddAngelContactContainer = styled.main`
 					width: 100%;
 					@media ${Media.tablet} {
 						margin: 0;
+						font-size: 14px;
 					}
 				}
 			}

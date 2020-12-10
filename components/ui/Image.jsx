@@ -5,7 +5,6 @@ import { Media } from '../../types/mediaquery';
 const Image = styled.img`
 	width: ${(props) => props.width};
 	height: ${(props) => props.height};
-	margin-right: 15px;
 	border-radius: 50%;
 	object-fit: cover;
 	cursor: pointer;
