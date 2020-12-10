@@ -24,12 +24,12 @@ const LogoutContainer = styled.div`
 		&:hover {
 			color: var(--blue);
 		}
-		@media ${Media.desktop} {
+		@media ${Media.tablet} {
 			font-size: 12px;
 		}
 	}
 	img {
-		@media ${Media.desktop} {
+		@media ${Media.tablet} {
 			width: 35px;
 			height: 35px;
 		}

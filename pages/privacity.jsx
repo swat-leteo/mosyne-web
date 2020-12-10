@@ -43,7 +43,12 @@ const PrivacityContainer = styled.main`
 	.mainContainer {
 		padding: 0 10px 60px 10px;
 		overflow-x: auto;
-		height: 100%;
+		@media ${Media.tablet} {
+			padding: 20px 30px;
+		}
+		@media ${Media.desktop} {
+			padding: 30px 250px;
+		}
 		h1 {
 			color: var(--blue);
 			font-size: 18px;
@@ -58,13 +63,10 @@ const PrivacityContainer = styled.main`
 		}
 	}
 	.bottomContainer {
-		position: absolute;
-		background-color: var(--white);
-		left: 45px;
-		bottom: 20px;
 		display: flex;
+		justify-content: flex-end;
+		margin-top: 100px;
 		button {
-			justify-content: center;
 			margin: 0;
 			&:first-of-type {
 				margin-right: 10px;
@@ -107,25 +109,27 @@ export default function Privacity() {
 						pellentesque sit amet arcu ac volutpat. Lorem ipsum dolor sit amet,
 						consectetur adipiscing elit.
 					</p>
-				</div>
-				<div className="bottomContainer">
-					<Button
-						bgColor="transparent"
-						textColor="var(--purple1)"
-						borderColor="var(--purple1)"
-					>
-						Cancelar
-					</Button>
-					<Link href="/add-angel-info">
-						<Button
-							bgColor="var(--purple1)"
-							textColor="#FAFAFA"
-							borderColor="var(--purple1)"
-							shadow="true"
-						>
-							Aceptar
-						</Button>
-					</Link>
+					<div className="bottomContainer">
+						<Link href="/profile">
+							<Button
+								bgColor="transparent"
+								textColor="var(--purple1)"
+								borderColor="var(--purple1)"
+							>
+								Cancelar
+							</Button>
+						</Link>
+						<Link href="/add-angel-info">
+							<Button
+								bgColor="var(--purple1)"
+								textColor="#FAFAFA"
+								borderColor="var(--purple1)"
+								shadow="true"
+							>
+								Aceptar
+							</Button>
+						</Link>
+					</div>
 				</div>
 			</PrivacityContainer>
 		</Layout>

@@ -10,17 +10,25 @@ const BulletsContainer = styled.div`
 	display: flex;
 	justify-content: space-around;
 	width: 100%;
-	margin-top: 40px;
+	margin-top: 20px;
+	@media ${Media.desktop} {
+		margin-top: 0;
+		padding: 0 250px;
+	}
 	hr {
 		position: absolute;
-		z-index: -1;
+		z-index: 1;
 		top: 14px;
 		left: 20px;
 		right: 20px;
 		border: 1px solid var(--blue);
-		@media ${Media.desktop} {
-			top: 30px;
+		@media ${Media.tablet} {
+			top: 25px;
 			border: 2px solid var(--blue);
+		}
+		@media ${Media.desktop} {
+			top: 35px;
+			margin: 0 250px;
 		}
 	}
 
@@ -35,9 +43,10 @@ const BulletsContainer = styled.div`
 		justify-content: center;
 		border-radius: 60%;
 		color: var(--white);
-		@media ${Media.desktop} {
-			width: 50px;
-			height: 50px;
+		z-index: 2;
+		@media ${Media.tablet} {
+			width: 40px;
+			height: 40px;
 			font-size: 16px;
 		}
 		&:nth-of-type(${(props) => props.bullet}) {

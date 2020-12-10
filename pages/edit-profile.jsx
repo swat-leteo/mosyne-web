@@ -115,8 +115,7 @@ const EditProfileContainer = styled.main`
 						margin-right: 12px;
 					}
 					input {
-						width: auto;
-						flex-grow: 1;
+						width: 100%;
 						@media ${Media.tablet} {
 							margin: 0;
 						}

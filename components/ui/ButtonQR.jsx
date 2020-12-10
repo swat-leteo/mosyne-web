@@ -1,41 +1,43 @@
-import { css } from "@emotion/core";
-import React from "react";
+//----- import Libraries
+import { css } from '@emotion/core';
+import React from 'react';
 
-import Button from "./Button";
-
-import IconCloud from "./icons/IconCloud";
+//----- import components
+import Button from './Button';
+import IconCloud from './icons/IconCloud';
+import { Media } from '../../types/mediaquery';
 
 const ButtonQR = ({ id }) => {
-  return (
-    <a
-      href={`https://api-mosine.appspot.com/api/angels/${id}/qr`}
-      target="__blank"
-      css={css`
-        text-decoration: none;
-        width: 50%;
-        button {
-          margin: 10px 0 0 10px;
-          width: 70%;
-          justify-content: center;
-          align-items: center;
-          font-size: 9px;
-          padding: 2px;
-          border-radius: 2.5px;
-          svg {
-            margin-right: 5px;
-          }
-        }
-      `}
-    >
-      <Button
-        bgColor="var(--blue)"
-        textColor="#FAFAFA"
-        borderColor="var(--blue)"
-      >
-        <IconCloud /> Descargar codigo QR
-      </Button>
-    </a>
-  );
+	return (
+		<a
+			href={`https://api-mosine.appspot.com/api/angels/${id}/qr`}
+			target="__blank"
+			css={css`
+				text-decoration: none;
+				button {
+					justify-content: center;
+					align-items: center;
+					padding: 5px 15px;
+					font-size: 9px;
+					border-radius: 2.5px;
+					@media ${Media.tablet} {
+						font-size: 12px;
+					}
+					svg {
+						margin-right: 5px;
+					}
+				}
+			`}
+		>
+			<Button
+				bgColor="var(--blue)"
+				textColor="#FAFAFA"
+				borderColor="var(--blue)"
+			>
+				<IconCloud /> Descargar codigo QR
+			</Button>
+		</a>
+	);
 };
 
 export default ButtonQR;
