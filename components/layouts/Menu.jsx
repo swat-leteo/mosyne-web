@@ -94,7 +94,7 @@ const Menu = ({ menu, showMenu }) => {
 						<hr />
 					</li>
 				</Link>
-				<Link href="/">
+				<Link href="/list-angels">
 					<li>
 						<IconAngel />
 						<p>Ángeles</p>
