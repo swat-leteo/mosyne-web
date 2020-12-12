@@ -12,6 +12,8 @@ import {
 	AGREGAR_ANGEL,
 	OBTENER_ANGELES,
 	OBTENER_ANGEL,
+	EDITAR_ANGEL_INFO,
+	EDITAR_ANGEL_CONTACT,
 } from '../../types';
 
 import Swal from 'sweetalert2';
@@ -81,6 +83,54 @@ const AngelState = (props) => {
 		}
 	};
 
+	const editarAngelInfo = async (id, angel) => {
+		const angelinfo = state.angelinfo;
+		const { status, data } = await clienteAxios.put(`/angels/${id}`, angel);
+		if (status === 201) {
+			// dispatch({
+			// 	type: EDITAR_ANGEL_INFO,
+			// 	payload: data.id,
+			// });
+			Swal.fire(
+				'¡Ángel modificado!',
+				'La información de tu angel se ha modificado exitosamente.',
+				'success'
+			);
+			router.push('/profile');
+		} else {
+			Swal.fire({
+				icon: 'error',
+				title: '¡Error!',
+				text: 'Hubo un error.',
+			});
+		}
+	};
+
+	const editarAngelContact = async (id, angelContact) => {
+		const { status, data } = await clienteAxios.put(
+			`/angels/contact/${id}`,
+			angelContact
+		);
+		if (status === 201) {
+			// dispatch({
+			// 	type: EDITAR_ANGEL_CONTACT,
+			// 	payload: data.id,
+			// });
+			Swal.fire(
+				'¡Ángel modificado!',
+				'El contacto de tu ángel se ha modificado exitosamente.',
+				'success'
+			);
+			router.push('/profile');
+		} else {
+			Swal.fire({
+				icon: 'error',
+				title: '¡Error!',
+				text: 'Hubo un error.',
+			});
+		}
+	};
+
 	const obtenerAngeles = async () => {
 		const { status, data } = await clienteAxios.get('/angels');
 		if (status === 200) {
@@ -101,6 +151,18 @@ const AngelState = (props) => {
 		}
 	};
 
+	const encontrarAngel = async (id) => {
+		const { status, data } = await clienteAxios.get(
+			`/angels/${id}?send_email=true`
+		);
+		if (status === 200) {
+			dispatch({
+				type: OBTENER_ANGEL,
+				payload: data,
+			});
+		}
+	};
+
 	return (
 		<AngelContext.Provider
 			value={{
@@ -113,6 +175,9 @@ const AngelState = (props) => {
 				agregarAngel,
 				obtenerAngeles,
 				obtenerAngel,
+				editarAngelInfo,
+				editarAngelContact,
+				encontrarAngel,
 			}}
 		>
 			{props.children}

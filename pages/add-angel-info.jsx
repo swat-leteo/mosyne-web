@@ -118,7 +118,6 @@ const AddAngelInfoContainer = styled.main`
 				color: var(--red);
 			}
 		}
-
 		.image > div {
 			background-color: var(--gray);
 			color: var(--violet);
@@ -268,7 +267,7 @@ export default function AddAngelInfo() {
 	return (
 		<Layout display="flex" menu={true}>
 			<Menu menu={menu} showMenu={showMenu} />
-			<AddAngelInfoContainer menu={menu}>
+			<AddAngelInfoContainer>
 				<Header>
 					<Logout />
 				</Header>
@@ -334,23 +333,30 @@ export default function AddAngelInfo() {
 					</div>
 					<div>
 						<label htmlFor="nationality">Nacionalidad*</label>
-						<Input
-							type="text"
-							placeholder="País de procedencia"
-							name="nationality"
-							onChange={handleChange}
-						/>
+						<select name="nationality" onChange={handleChange}>
+							<option value="">-- Selecciona --</option>
+							<option value="Argentina">Argentina</option>
+							<option value="Bolivia">Boliviana</option>
+							<option value="Chile">Chilena</option>
+							<option value="Colombia">Colombiana</option>
+							<option value="Guatemala">Gautemalteca</option>
+							<option value="Honduras">Hondureña</option>
+							<option value="Mexico">Mexicana</option>
+							<option value="Panama">Panameña</option>
+							<option value="Peru">Peruana</option>
+							<option value="Spain">Española</option>
+							<option value="Venezuela">Venezolana</option>
+						</select>
 						{error.nationality && <p>* {error.nationality}</p>}
 					</div>
 					<div>
 						<label htmlFor="about">Sobre tu angel</label>
 						<textarea
-							name=""
-							id=""
 							cols="30"
 							rows="10"
 							placeholder="Escribe sus gustos, miedos, personalidad, etc."
 							name="about"
+							id="about"
 							onChange={handleChange}
 						></textarea>
 					</div>

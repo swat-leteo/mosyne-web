@@ -1,14 +1,12 @@
 //----- import Libraries
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 //----- import components
-import Button from '../ui/Button';
 import Image from '../ui/Image';
 import ButtonQR from '../ui/ButtonQR';
-import IconCloud from '../ui/icons/IconCloud';
 import { Media } from '../../types/mediaquery';
 import IconUserDefault from '../ui/icons/IconUserDefault';
 
@@ -62,13 +60,13 @@ const CardAngelContainer = styled.div`
 			color: var(--black);
 			cursor: pointer;
 			margin-right: 20px;
+			@media ${Media.tablet} {
+				font-size: 14px;
+			}
 			&:nth-of-type(${(props) => props.tab}) {
 				margin-right: 20px;
 				padding-bottom: 5px;
 				border-bottom: 3px solid var(--blue);
-			}
-			@media ${Media.tablet} {
-				font-size: 14px;
 			}
 		}
 	}

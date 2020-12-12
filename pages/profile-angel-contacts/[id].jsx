@@ -16,6 +16,7 @@ import Input from '../../components/ui/Input';
 import { Media } from '../../types/mediaquery';
 
 //----- import context
+import validarAngelContact from '../../validation/validarAngelContact';
 import AngelContext from '../../context/angel/angelContext';
 
 const ProfileAngelContactsContainer = styled.section`
@@ -75,6 +76,17 @@ const ProfileAngelContactsContainer = styled.section`
 				}
 			}
 		}
+		select {
+			margin-top: 5px;
+			height: 40px;
+			color: var(--black);
+			background-color: var(--white);
+			border-color: var(--gray);
+			border-radius: 2px;
+			@media ${Media.tablet} {
+				font-size: 14px;
+			}
+		}
 		.row {
 			display: flex;
 			flex-direction: row;
@@ -120,18 +132,46 @@ const ProfileAngelContactsContainer = styled.section`
 export default function ProfileAngelContacts() {
 	const [menu, showMenu] = useState(false);
 	const router = useRouter();
-	const { obtenerAngel, angelinfo } = useContext(AngelContext);
+	const { obtenerAngel, editarAngelContact, angelinfo } = useContext(
+		AngelContext
+	);
 	const {
 		query: { id },
 	} = router;
-
 	const windowWith = typeof window !== 'undefined' && window.innerWidth;
+	const [error, setError] = useState({});
+	const [contact, setContact] = useState({});
+
 	useEffect(() => {
 		obtenerAngel(id);
 		if (windowWith >= 1440) {
 			showMenu(true);
 		}
-	}, [id]);
+	}, []);
+	useEffect(() => {
+		setContact({
+			angel_relation: angelinfo.contacts[0].angel_relation,
+			name: angelinfo.contacts[0].name,
+			cel: angelinfo.contacts[0].cel,
+			phone: angelinfo.contacts[0].phone,
+		});
+	}, [angelinfo]);
+
+	const handleChange = (e) => {
+		setContact({
+			...contact,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const errores = validarAngelContact(contact);
+		setError(errores);
+		if (Object.keys(errores).length === 0) {
+			editarAngelContact(id, contact);
+		}
+	};
 
 	return (
 		<Layout display="flex" menu={true}>
@@ -141,27 +181,63 @@ export default function ProfileAngelContacts() {
 					<Logout />
 				</Header>
 				<CardAngel tab="2" menu={menu} id={id} />
-				<form>
+				<form onSubmit={handleSubmit}>
 					<div>
-						<label htmlFor="">Nombre</label>
+						<label htmlFor="angel_relation">¿Qué eres de tu angel?*</label>
+						<select
+							name="angel_relation"
+							id="angel_relation"
+							onChange={handleChange}
+							value={contact.angel_relation}
+						>
+							<option value="">-- Selecciona --</option>
+							<option value="hijo">Hijo</option>
+							<option value="hija">Hija</option>
+							<option value="madre">Madre</option>
+							<option value="padre">Padre</option>
+							<option value="abuela">Abuela</option>
+							<option value="abuelo">Abuelo</option>
+							<option value="nieto">Nieto</option>
+							<option value="nieta">Nieta</option>
+							<option value="amig@">Amig@</option>
+							<option value="tio">Tio</option>
+							<option value="tia">Tia</option>
+							<option value="prim@">Prim@</option>
+							<option value="otro">Otro</option>
+						</select>
+						{error.angel_relation && <p>* {error.angel_relation}</p>}
+					</div>
+					<div>
+						<label htmlFor="name">Nombre*</label>
 						<Input
 							type="text"
 							placeholder="Mínimo 2 caracteres"
-							value={angelinfo.contacts[0].name}
+							name="name"
+							id="name"
+							defaultValue={contact.name}
+							onChange={handleChange}
 						/>
-					</div>
-					<div>
-						<label htmlFor="">Correo electrónico</label>
-						<Input type="email" placeholder="ejemplo@mail.com" />
 					</div>
 					<div className="row">
 						<div>
-							<label htmlFor="">Teléfono de casa</label>
-							<Input type="text" />
+							<label htmlFor="phone">Teléfono de casa</label>
+							<Input
+								type="text"
+								name="phone"
+								id="phone"
+								defaultValue={contact.phone}
+								onChange={handleChange}
+							/>
 						</div>
 						<div>
-							<label htmlFor="">Teléfono celular</label>
-							<Input type="text" value={angelinfo.contacts[0].phone} />
+							<label htmlFor="cel">Teléfono celular</label>
+							<Input
+								type="text"
+								name="cel"
+								id="cel"
+								defaultValue={contact.cel}
+								onChange={handleChange}
+							/>
 						</div>
 					</div>
 					<div className="buttons">
@@ -172,16 +248,15 @@ export default function ProfileAngelContacts() {
 						>
 							Regresar
 						</Button>
-						<Link href="/add-angel-diseases">
-							<Button
-								bgColor="var(--purple1)"
-								textColor="#FAFAFA"
-								borderColor="var(--purple1)"
-								shadow="true"
-							>
-								Guardar
-							</Button>
-						</Link>
+						<Button
+							bgColor="var(--purple1)"
+							textColor="#FAFAFA"
+							borderColor="var(--purple1)"
+							shadow="true"
+							type="submit"
+						>
+							Guardar
+						</Button>
 					</div>
 				</form>
 			</ProfileAngelContactsContainer>

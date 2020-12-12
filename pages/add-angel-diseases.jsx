@@ -184,7 +184,6 @@ export default function AddAngelDiseases() {
 
 	const [menu, showMenu] = useState(false);
 	const [error, setError] = useState({});
-
 	const [diseases, setDiseases] = useState({
 		blood_type: '',
 		living_alone: false,

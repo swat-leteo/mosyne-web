@@ -14,9 +14,11 @@ import CardAngel from '../../components/layouts/CardAngel';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import IconPlus from '../../components/ui/icons/IconPlus';
+import IconDelete from '../../components/ui/icons/IconDelete';
 import { Media } from '../../types/mediaquery';
 
 //----- import context
+import validarAngelDiseases from '../../validation/validarAngelDiseases';
 import AngelContext from '../../context/angel/angelContext';
 
 const ProfileAngelDiseasesContainer = styled.section`
@@ -91,6 +93,11 @@ const ProfileAngelDiseasesContainer = styled.section`
 			select {
 				height: 40px;
 			}
+			.error {
+				margin: 5px 0 0;
+				font-size: 10px;
+				color: var(--red);
+			}
 		}
 		.checkbox-group {
 			display: flex;
@@ -156,18 +163,84 @@ const ProfileAngelDiseasesContainer = styled.section`
 export default function ProfileAngelDiseases() {
 	const [menu, showMenu] = useState(false);
 	const router = useRouter();
-	const { obtenerAngel, angelinfo } = useContext(AngelContext);
+	const { obtenerAngel, editarAngelInfo, angelinfo } = useContext(AngelContext);
 	const {
 		query: { id },
 	} = router;
 
 	const windowWith = typeof window !== 'undefined' && window.innerWidth;
+	const [error, setError] = useState({});
+	const [diseases, setDiseases] = useState({});
+
 	useEffect(() => {
 		obtenerAngel(id);
 		if (windowWith >= 1440) {
 			showMenu(true);
 		}
-	}, [id]);
+	}, []);
+	useEffect(() => {
+		setDiseases({
+			...angelinfo,
+			blood_type: angelinfo.blood_type,
+			living_alone: angelinfo.living_alone,
+			detonant: angelinfo.detonant,
+			alergies: angelinfo.alergies,
+			surgeries: angelinfo.surgeries,
+			medicines: angelinfo.medicines,
+			diabetes: angelinfo.diabetes,
+			hypertension: angelinfo.hypertension,
+			suffering: angelinfo.suffering,
+			health_info: angelinfo.health_info,
+		});
+	}, [angelinfo]);
+
+	const handleChange = (e) => {
+		setDiseases({
+			...diseases,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	const handleChangeDH = (e) => {
+		setDiseases({
+			...diseases,
+			[e.target.name]: e.target.checked,
+		});
+	};
+
+	const handleChangeASM = (name) => {
+		let value = document.getElementById(name).value;
+		if (value.trim() === '') {
+			setError({
+				...error,
+				[name]: 'Completa este campo',
+			});
+			return;
+		}
+		setError({});
+		document.getElementById(name).value = '';
+		setDiseases({
+			...diseases,
+			[name]: [...diseases[name], value],
+		});
+	};
+
+	const deleteASM = (name, elemento) => {
+		setDiseases({
+			...diseases,
+			[name]: diseases[name].filter((d, index) => index !== elemento),
+		});
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const errores = validarAngelDiseases(diseases);
+		setError(errores);
+		if (Object.keys(errores).length === 0) {
+			editarAngelInfo(id, diseases);
+		}
+	};
+	console.log(diseases);
 
 	return (
 		<Layout display="flex" menu={true}>
@@ -177,10 +250,10 @@ export default function ProfileAngelDiseases() {
 					<Logout />
 				</Header>
 				<CardAngel tab="3" menu={menu} id={id} />
-				<form>
+				<form onSubmit={handleSubmit}>
 					<div>
 						<label htmlFor="">Tipo de sangre*</label>
-						<select name="blood_type">
+						<select name="blood_type" defaultValue={diseases.blood_type}>
 							<option value="">-- Selecciona --</option>
 							<option value="A-">A-</option>
 							<option value="A+">A+</option>
@@ -196,12 +269,26 @@ export default function ProfileAngelDiseases() {
 						<label htmlFor="">¿Vive solo?</label>
 						<div className="checkbox-group">
 							<div className="checkbox">
-								<input type="radio" name="life" id="si" value="si" />
+								<input
+									type="radio"
+									name="life"
+									id="si"
+									value={true}
+									checked={diseases.living_alone === true ? true : false}
+									onChange={handleChange}
+								/>
 								<div></div>
 								<label htmlFor="si">Si</label>
 							</div>
 							<div className="checkbox">
-								<input type="radio" name="life" id="no" value="no" />
+								<input
+									type="radio"
+									name="life"
+									id="no"
+									value={false}
+									checked={diseases.living_alone === false ? true : false}
+									onChange={handleChange}
+								/>
 								<div></div>
 								<label htmlFor="no">No</label>
 							</div>
@@ -215,7 +302,9 @@ export default function ProfileAngelDiseases() {
 									type="radio"
 									name="detonante"
 									id="herencia"
-									value="herencia"
+									value="inherited"
+									checked={diseases.detonant === 'inherited' ? true : false}
+									onChange={handleChange}
 								/>
 								<div></div>
 								<label htmlFor="herencia">Herencía</label>
@@ -225,7 +314,9 @@ export default function ProfileAngelDiseases() {
 									type="radio"
 									name="detonante"
 									id="depresion"
-									value="depresion"
+									value="depression"
+									checked={diseases.detonant === 'depression' ? true : false}
+									onChange={handleChange}
 								/>
 								<div></div>
 								<label htmlFor="depresion">Depresión</label>
@@ -235,7 +326,9 @@ export default function ProfileAngelDiseases() {
 									type="radio"
 									name="detonante"
 									id="neurologico"
-									value="neurologico"
+									value="neurological"
+									checked={diseases.detonant === 'neurological' ? true : false}
+									onChange={handleChange}
 								/>
 								<div></div>
 								<label htmlFor="neurologico">Neurologico</label>
@@ -246,22 +339,73 @@ export default function ProfileAngelDiseases() {
 						<label htmlFor="">Alergías</label>
 						<div>
 							<Input type="text" />
-							<IconPlus width="25px" height="25px" />
+							<IconPlus
+								width="25px"
+								height="25px"
+								onClick={() => handleChangeASM('alergies')}
+							/>
 						</div>
+						{error.alergies && <p className="error">* {error.alergies}</p>}
+						{typeof diseases.surgeries === 'undefined'
+							? null
+							: diseases.alergies?.map((alergie, index) => (
+									<div key={`alergie-${index}`}>
+										<p>{alergie}</p>
+										<IconDelete
+											width="15px"
+											height="15px"
+											onClick={() => deleteASM('alergies', index)}
+										/>
+									</div>
+							  ))}
 					</div>
 					<div className="cirugias">
 						<label htmlFor="">Cirugías</label>
 						<div>
 							<Input type="text" />
-							<IconPlus width="25px" height="25px" />
+							<IconPlus
+								width="25px"
+								height="25px"
+								onClick={() => handleChangeASM('alergies')}
+							/>
 						</div>
+						{error.surgeries && <p className="error">* {error.surgeries}</p>}
+						{typeof diseases.surgeries === 'undefined'
+							? null
+							: diseases.surgeries?.map((surgerie, index) => (
+									<div key={`surgerie-${index}`}>
+										<p>{surgerie}</p>
+										<IconDelete
+											width="15px"
+											height="15px"
+											onClick={() => deleteASM('surgeries', index)}
+										/>
+									</div>
+							  ))}
 					</div>
 					<div className="medicamentos">
 						<label htmlFor="">Medicamentos</label>
 						<div>
 							<Input type="text" />
-							<IconPlus width="25px" height="25px" />
+							<IconPlus
+								width="25px"
+								height="25px"
+								onClick={() => handleChangeASM('alergies')}
+							/>
 						</div>
+						{error.medicines && <p className="error">* {error.medicines}</p>}
+						{typeof diseases.surgeries === 'undefined'
+							? null
+							: diseases.medicines.map((medicine, index) => (
+									<div key={`medicine-${index}`}>
+										<p>{medicine}</p>
+										<IconDelete
+											width="15px"
+											height="15px"
+											onClick={() => deleteASM('medicines', index)}
+										/>
+									</div>
+							  ))}
 					</div>
 					<div className="disease">
 						<label htmlFor="">¿Sufré de alguna de estas enfermedades?</label>
@@ -269,9 +413,10 @@ export default function ProfileAngelDiseases() {
 							<div className="checkbox">
 								<input
 									type="radio"
-									name="disease"
+									name="diabetes"
 									id="diabetes"
-									value="diabetes"
+									checked={diseases.diabetes === true ? true : false}
+									onChange={handleChangeDH}
 								/>
 								<div></div>
 								<label htmlFor="diabetes">Diabetes</label>
@@ -279,9 +424,10 @@ export default function ProfileAngelDiseases() {
 							<div className="checkbox">
 								<input
 									type="radio"
-									name="disease"
-									id="hipertension"
-									value="hipertension"
+									name="hypertension"
+									id="hypertension"
+									checked={diseases.hypertension === true ? true : false}
+									onChange={handleChangeDH}
 								/>
 								<div></div>
 								<label htmlFor="hipertension">Hipertensión</label>
@@ -289,23 +435,27 @@ export default function ProfileAngelDiseases() {
 						</div>
 					</div>
 					<div>
-						<label htmlFor="">Reacciones ante medicamentos</label>
+						<label htmlFor="health_info">Reacciones ante medicamentos</label>
 						<textarea
-							name=""
-							id=""
+							name="health_info"
+							id="health_info"
 							cols="30"
 							rows="10"
 							placeholder="Describe reacciones ante medicamentos"
+							defaultValue={diseases.health_info}
+							onChange={handleChange}
 						></textarea>
 					</div>
 					<div>
-						<label htmlFor="">Dolencias</label>
+						<label htmlFor="suffering">Dolencias</label>
 						<textarea
-							name=""
-							id=""
+							name="suffering"
+							id="suffering"
 							cols="30"
 							rows="10"
 							placeholder="Describe dolencias recientes"
+							defaultValue={diseases.suffering}
+							onChange={handleChange}
 						></textarea>
 					</div>
 					<div className="buttons">
@@ -316,16 +466,15 @@ export default function ProfileAngelDiseases() {
 						>
 							Regresar
 						</Button>
-						<Link href="/generate-qr">
-							<Button
-								bgColor="var(--purple1)"
-								textColor="#FAFAFA"
-								borderColor="var(--purple1)"
-								shadow="true"
-							>
-								Guardar
-							</Button>
-						</Link>
+						<Button
+							bgColor="var(--purple1)"
+							textColor="#FAFAFA"
+							borderColor="var(--purple1)"
+							shadow="true"
+							type="submit"
+						>
+							Guardar
+						</Button>
 					</div>
 				</form>
 			</ProfileAngelDiseasesContainer>
