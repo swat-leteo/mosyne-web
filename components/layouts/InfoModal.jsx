@@ -62,7 +62,9 @@ const ModalButton = styled.button`
 const InfoModal = ({ closeModal }) => {
 	return (
 		<ModalContainer>
-			<IconMosine width="200" heigh="50" />
+			<div>
+				<IconMosine width="200" heigh="50" />
+			</div>
 			<h1>Existen dos palabras que tienes que conocer</h1>
 			<Description>
 				<div>

@@ -2,12 +2,10 @@
 import { useContext, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 //----- import components
 import Layout from '../../components/layouts/Layout';
 import Loader from '../../components/ui/Loader';
-import IconPhone from '../../components/ui/icons/IconPhone';
 import IconUserDefault from '../../components/ui/icons/IconUserDefault';
 import IconPolice from '../../components/ui/icons/IconPolice';
 import IconCruzRoja from '../../components/ui/icons/IconCruzRoja';
@@ -118,7 +116,7 @@ const Emergency = styled.div`
 
 export default function Angel() {
 	const router = useRouter();
-	const { obtenerAngel, angelinfo } = useContext(AngelContext);
+	const { encontrarAngel, angelinfo } = useContext(AngelContext);
 	const {
 		firstname,
 		lastname,
@@ -141,7 +139,7 @@ export default function Angel() {
 
 	useEffect(() => {
 		if (id) {
-			obtenerAngel(id);
+			encontrarAngel(id);
 		}
 	}, [id]);
 

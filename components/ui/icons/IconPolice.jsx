@@ -1,10 +1,10 @@
 import React from 'react';
 
-const IconPolice = ({ width = '30', height = '35' }) => {
+const IconPolice = () => {
 	return (
 		<svg
-			width={width}
-			height={height}
+			width="30"
+			height="35"
 			viewBox="0 0 12 15"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"

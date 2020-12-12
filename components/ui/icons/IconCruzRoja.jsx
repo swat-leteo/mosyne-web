@@ -1,10 +1,10 @@
 import React from 'react';
 
-const IconCruzRoja = ({ width = '30', height = '35' }) => {
+const IconCruzRoja = () => {
 	return (
 		<svg
-			width={width}
-			height={height}
+			width="30"
+			height="35"
 			viewBox="0 0 18 15"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"

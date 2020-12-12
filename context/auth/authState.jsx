@@ -29,6 +29,11 @@ const AuthState = (props) => {
 				'Verifica tu email para poder loguearte.',
 				'success'
 			);
+			if (windowWith >= 1440) {
+				window.location = '/profile';
+			} else {
+				window.location = '/register-confirm';
+			}
 		}
 		if (status === 409) {
 			Swal.fire({
@@ -42,11 +47,7 @@ const AuthState = (props) => {
 	const loginUsuario = async (usuario) => {
 		const { status } = await clienteAxios.post('/auth/login', usuario);
 		if (status === 200) {
-			if (windowWith >= 1440) {
-				window.location = '/profile';
-			} else {
-				window.location = '/register-confirm';
-			}
+			window.location = '/profile';
 			Swal.fire(
 				'¡Inicio de sesión exitoso!',
 				'Haz iniciado sesión correctamente.',

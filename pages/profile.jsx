@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import Modal from 'react-modal';
 
 //----- import components
 import Image from '../components/ui/Image';
@@ -16,6 +17,7 @@ import IconPolice from '../components/ui/icons/IconPolice';
 import IconCruzRoja from '../components/ui/icons/IconCruzRoja';
 import IconUserDefault from '../components/ui/icons/IconUserDefault';
 import { Media } from '../types/mediaquery';
+import InfoModal from '../components/layouts/InfoModal';
 
 //----- import context
 import UserContext from '../context/user/userContext';
@@ -233,12 +235,21 @@ const ProfileContainer = styled.main`
 	}
 `;
 
+Modal.setAppElement('#__next');
+
 export default function Profile() {
 	const [menu, showMenu] = useState(false);
-	const router = useRouter();
+	const [modalIsOpen, setModal] = useState(false);
 	const { obtenerUsuario, usuario } = useContext(UserContext);
 	const { angels, obtenerAngeles } = useContext(AngelContext);
 	const { photo, firstname, lastname } = usuario;
+
+	const openModal = () => {
+		setModal(true);
+	};
+	const closeModal = (params) => {
+		setModal(false);
+	};
 
 	const windowWith = typeof window !== 'undefined' && window.innerWidth;
 
@@ -250,7 +261,14 @@ export default function Profile() {
 			obtenerAngeles();
 		}
 		if (windowWith >= 1440) {
+			const modalOpened = sessionStorage.getItem('modal');
 			showMenu(true);
+			if (modalOpened !== 'true') {
+				setTimeout(() => {
+					openModal();
+					sessionStorage.setItem('modal', true);
+				}, 1000);
+			}
 		}
 	}, [angels]);
 
@@ -350,6 +368,27 @@ export default function Profile() {
 					</div>
 				</div>
 			</ProfileContainer>
+			<Modal
+				isOpen={modalIsOpen}
+				onRequestClose={closeModal}
+				style={{
+					overlay: {
+						background: 'rgba(0,0,0,0.75)',
+					},
+					content: {
+						top: '50%',
+						left: '50%',
+						transform: 'translate(-50%, -50%)',
+						padding: '0',
+						background: 'transparent',
+						maxWidth: '30%',
+						height: '70vh',
+						border: 'none',
+					},
+				}}
+			>
+				<InfoModal closeModal={closeModal} />
+			</Modal>
 		</Layout>
 	);
 }
