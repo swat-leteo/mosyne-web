@@ -224,7 +224,7 @@ export default function Angel() {
 								<h3>Dolencias</h3>
 								<p>{suffering}</p>
 							</DescriptionBox>
-							<DescriptionBox type="small">
+							<DescriptionBox>
 								<h3>Reacciones ante medicamentos</h3>
 								<p>{health_info}</p>
 							</DescriptionBox>
