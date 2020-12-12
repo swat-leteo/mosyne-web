@@ -240,7 +240,6 @@ export default function ProfileAngelDiseases() {
 			editarAngelInfo(id, diseases);
 		}
 	};
-	console.log(diseases);
 
 	return (
 		<Layout display="flex" menu={true}>

@@ -234,7 +234,6 @@ export default function ProfileAngelData() {
 			editarAngelInfo(id, angel);
 		}
 	};
-	console.log(angel);
 
 	return (
 		<Layout display="flex" menu={true}>

@@ -129,9 +129,9 @@ export default function Angel() {
 		detonant,
 		suffering,
 		health_info,
+		surgeries,
 	} = angelinfo;
 	const [tab, setTab] = useState(1);
-	console.log(angelinfo);
 
 	const {
 		query: { id },
@@ -224,7 +224,7 @@ export default function Angel() {
 								<h3>Dolencias</h3>
 								<p>{suffering}</p>
 							</DescriptionBox>
-							<DescriptionBox>
+							<DescriptionBox type="small">
 								<h3>Reacciones ante medicamentos</h3>
 								<p>{health_info}</p>
 							</DescriptionBox>
@@ -235,8 +235,20 @@ export default function Angel() {
 								</DescriptionBox>
 							) : (
 								alergies.map((alergy) => (
-									<DescriptionBox>
+									<DescriptionBox type="small">
 										<p>{alergy}</p>
+									</DescriptionBox>
+								))
+							)}
+							<h3>Cirugías</h3>
+							{surgeries.length === 0 ? (
+								<DescriptionBox type="small">
+									<p>No le han hecho cirugías</p>
+								</DescriptionBox>
+							) : (
+								surgeries.map((surgery) => (
+									<DescriptionBox type="small">
+										<p>{surgeries}</p>
 									</DescriptionBox>
 								))
 							)}
@@ -247,7 +259,7 @@ export default function Angel() {
 								</DescriptionBox>
 							) : (
 								medicines.map((alergy) => (
-									<DescriptionBox>
+									<DescriptionBox type="small">
 										<p>{alergy}</p>
 									</DescriptionBox>
 								))
