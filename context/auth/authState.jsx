@@ -30,7 +30,7 @@ const AuthState = (props) => {
 				'success'
 			);
 			if (windowWith >= 1440) {
-				window.location = '/profile';
+				window.location = '/';
 			} else {
 				window.location = '/register-confirm';
 			}
